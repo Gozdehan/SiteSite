@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent" android:layout_width="match_parent">
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gozdehanozturk.sitesite.CosmeticActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/avon"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="avon"/>
+
+    <Button
+        android:id="@+id/bodyshop"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="body shop"/>
+
+    <Button
+        android:id="@+id/clinique"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="clınıque"/>
+
+    <Button
+        android:id="@+id/flormar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="flormar"/>
+
+    <Button
+        android:id="@+id/golden"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="golden rose"/>
+
+    <Button
+        android:id="@+id/gratis"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="gratıs"/>
+
+    <Button
+        android:id="@+id/mac"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="mac"/>
+
+    <Button
+        android:id="@+id/rossman"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="rossman"/>
+
+    <Button
+        android:id="@+id/sephora"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="sephora"/>
+
+    <Button
+        android:id="@+id/six"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="sıx"/>
+
+
+    <Button
+        android:id="@+id/tekin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="tekin acar"/>
+
+    <Button
+        android:id="@+id/tshop"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="tshop"/>
+
+    <Button
+        android:id="@+id/yves"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="yves rocher"/>
+
+    <Button
+        android:id="@+id/watsons"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="watsons"/>
+
+</LinearLayout>
+
+</ScrollView>

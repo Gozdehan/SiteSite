@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent" android:layout_width="match_parent">
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.gozdehanozturk.sitesite.ManFashionActivity">
+
+
+    <Button
+        android:id="@+id/altinyildiz"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="altınyıldız"/>
+
+    <Button
+        android:id="@+id/avva"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="avva"/>
+
+    <Button
+        android:id="@+id/cacharel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="cacharel"/>
+
+    <Button
+        android:id="@+id/damat"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="damat | tween"/>
+
+    <Button
+        android:id="@+id/efor"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="efor"/>
+
+    <Button
+        android:id="@+id/fabrika"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="fabrika"/>
+
+    <Button
+        android:id="@+id/hatemoglu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="hatemoğlu"/>
+
+    <Button
+        android:id="@+id/igs"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="ıgs"/>
+
+    <Button
+        android:id="@+id/jack"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="Jack Jones"/>
+
+    <Button
+        android:id="@+id/kigili"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="Kiğılı"/>
+
+    <Button
+        android:id="@+id/ramsey"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="ramsey"/>
+
+    <Button
+        android:id="@+id/süvari"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="Süvari"/>
+
+</LinearLayout>
+    </ScrollView>

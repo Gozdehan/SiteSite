@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent" android:layout_width="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.gozdehanozturk.sitesite.CultureArtActivity">
+
+        <Button
+            android:id="@+id/netflix"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="netflıx"/>
+
+        <Button
+            android:id="@+id/puhu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="puhutv"/>
+
+        <Button
+            android:id="@+id/blu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="blutv"/>
+
+        <Button
+            android:id="@+id/sezonluk"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="sezonluk dizi"/>
+
+        <Button
+            android:id="@+id/online"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="online dizi"/>
+
+        <Button
+            android:id="@+id/diziist"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="dızııst"/>
+
+        <Button
+            android:id="@+id/dizipub"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="dızıpub"/>
+
+        <Button
+            android:id="@+id/dizilab"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="dızılab"/>
+        <Button
+            android:id="@+id/diziay"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="dızıay"/>
+
+        <Button
+            android:id="@+id/dizigo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="dızıgo"/>
+
+        <Button
+            android:id="@+id/dizimag"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="dızımag"/>
+        <Button
+            android:id="@+id/dizibox"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="dızıbox"/>
+
+        <Button
+            android:id="@+id/hdtv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="dızıhdtv"/>
+        <Button
+            android:id="@+id/dizihit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="dızıhıt"/>
+
+        <Button
+            android:id="@+id/diziler"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="diziler.com"/>
+        <Button
+            android:id="@+id/ddizi"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="ddizi"/>
+
+        <Button
+            android:id="@+id/fullhd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="fullhdfilm"/>
+
+        <Button
+            android:id="@+id/hdfilmsitesi"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="hdfilmsitesi"/>
+
+        <Button
+            android:id="@+id/fullhdfilmizlesene"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="fullhdfilmizlesene"/>
+
+      <Button
+          android:id="@+id/hizliizlefilm"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_marginLeft="5dp"
+          android:layout_marginRight="5dp"
+          android:layout_marginBottom="5dp"
+          android:textColor="#ffffff"
+          android:background="@drawable/button_background"
+          android:text="hızlıizlefilm"/>
+
+      <Button
+          android:id="@+id/filmgoo"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_marginLeft="5dp"
+          android:layout_marginRight="5dp"
+          android:layout_marginBottom="5dp"
+          android:textColor="#ffffff"
+          android:background="@drawable/button_background"
+          android:text="fılmgoo"/>
+
+      <Button
+          android:id="@+id/filmifullizle"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_marginLeft="5dp"
+          android:layout_marginRight="5dp"
+          android:layout_marginBottom="5dp"
+          android:textColor="#ffffff"
+          android:background="@drawable/button_background"
+          android:text="filmifullizle"/>
+
+      <Button
+          android:id="@+id/filmizlesene"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_marginLeft="5dp"
+          android:layout_marginRight="5dp"
+          android:layout_marginBottom="5dp"
+          android:textColor="#ffffff"
+          android:background="@drawable/button_background"
+          android:text="filmizlesene"/>
+
+        <Button
+            android:id="@+id/sinebol"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="sinebol"/>
+    </LinearLayout>
+
+</ScrollView>

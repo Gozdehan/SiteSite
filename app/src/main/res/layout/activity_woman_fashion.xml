@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent" android:layout_width="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.gozdehanozturk.sitesite.WomanFashionActivity">
+
+    <Button
+        android:id="@+id/adil"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="adil ışık"/>
+
+    <Button
+        android:id="@+id/batik"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="batik"/>
+
+    <Button
+        android:id="@+id/faik"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="faik sonmez"/>
+
+    <Button
+        android:id="@+id/forevernew"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="forever new"/>
+
+    <Button
+    android:id="@+id/ipekyol"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp"
+    android:textColor="#ffffff"
+    android:background="@drawable/button_background"
+    android:text="ipekyol"/>
+
+    <Button
+        android:id="@+id/oleg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="oleg cassını"/>
+
+    <Button
+        android:id="@+id/oxxo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="oxxo"/>
+
+    <Button
+        android:id="@+id/pologarage"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="polo garage"/>
+
+
+    <Button
+        android:id="@+id/roman"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="roman"/>
+
+    <Button
+        android:id="@+id/twist"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="Twıst"/>
+
+    <Button
+        android:id="@+id/veromoda"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="vero moda"/>
+
+    <Button
+        android:id="@+id/yargici"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="yargıcı"/>
+
+</LinearLayout>
+</ScrollView>

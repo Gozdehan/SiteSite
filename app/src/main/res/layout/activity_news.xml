@@ -12,121 +12,202 @@
     android:orientation="vertical"
     tools:context="com.gozdehanozturk.sitesite.NewsActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="Kategori:"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="HABERLER"/>
-
-    </LinearLayout>
+  <Button
+      android:id="@+id/onedio"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_margin="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="onedio"/>
 
     <Button
         android:id="@+id/aa"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="ANADOLU AJANSI"/>
 
     <Button
         android:id="@+id/cnn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:text="cnnturk"/>
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="cnn türk"/>
 
     <Button
         android:id="@+id/dha"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="dha"/>
 
     <Button
         android:id="@+id/ensonhbr"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:text="ensonhaber"/>
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="en son haber"/>
 
     <Button
         android:id="@+id/gazete"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="gazeteoku"/>
 
     <Button
         android:id="@+id/gundem"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:text="gercekgundem"/>
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="gerçek gündem"/>
 
     <Button
         android:id="@+id/haber7"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="haber7"/>
 
     <Button
         android:id="@+id/haberturk"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:text="haberturk"/>
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="habertürk"/>
 
     <Button
         android:id="@+id/ntv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="ntv haber"/>
-
-    <Button
-        android:id="@+id/onedio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        android:text="onedio"/>
 
     <Button
         android:id="@+id/trt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="trt haber"/>
+
+  <Button
+      android:id="@+id/bbc"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="bbc news"/>
+
+  <Button
+      android:id="@+id/fox"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="fox news"/>
+
+  <Button
+      android:id="@+id/cnnYabanci"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="cnn"/>
+
+  <Button
+      android:id="@+id/cnbc"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="cnbc"/>
+
+  <Button
+      android:id="@+id/independent"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="the ındependent"/>
+
+  <Button
+      android:id="@+id/huffpost"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="huffpost"/>
+
+  <Button
+      android:id="@+id/newyorktimes"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="new york tımes"/>
 
 </LinearLayout>
 

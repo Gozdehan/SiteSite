@@ -12,105 +12,232 @@
     android:orientation="vertical"
     tools:context="com.gozdehanozturk.sitesite.CultureArtActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="Kategori:"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="KULTUR/SANAT"/>
-
-    </LinearLayout>
-
-
-
     <Button
         android:id="@+id/biletix"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_margin="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="Biletix"/>
 
     <Button
         android:id="@+id/dr"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="d&amp;r"/>
 
     <Button
         android:id="@+id/kitapYurdu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="Kitap yurdu"/>
+    <Button
+    android:id="@+id/idefix"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp"
+    android:textColor="#ffffff"
+    android:background="@drawable/button_background"
+    android:text="idefix"/>
+  <Button
+      android:id="@+id/remzi"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="remzi kitapevi"/>
+
+  <Button
+      android:id="@+id/nezih"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="nezih kitap"/>
+  <Button
+      android:id="@+id/nadir"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="nadir kitap"/>
+
+  <Button
+      android:id="@+id/kabalci"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="kabalcı"/>
+  <Button
+      android:id="@+id/mephisto"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="mephisto"/>
 
     <Button
         android:id="@+id/beyazperde"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="beyazperde"/>
 
     <Button
         android:id="@+id/ISTModern"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="istanbul modern"/>
 
     <Button
         android:id="@+id/sanatlog"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
         android:text="sanatlog"/>
 
     <Button
         android:id="@+id/sanatOnline"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:text="sanatonlıne"/>
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="sanatonline"/>
 
     <Button
         android:id="@+id/tiyatroOnline"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:text="tıyatroonlıne"/>
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="tıyatronline"/>
 
     <Button
         android:id="@+id/dunyaBizim"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:text="dunyabızım"/>
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="dünyabizim"/>
+
+  <Button
+      android:id="@+id/pera"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="pera müzesi"/>
+
+  <Button
+      android:id="@+id/koç"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="koç müzesi"/>
+
+  <Button
+      android:id="@+id/sabanci"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="sabancı müzesi"/>
+
+  <Button
+      android:id="@+id/oyuncak"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="oyuncak müzesi"/>
+
+  <Button
+      android:id="@+id/isSanat"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="iş sanat"/>
+
+  <Button
+      android:id="@+id/akbank"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="5dp"
+      android:textColor="#ffffff"
+      android:background="@drawable/button_background"
+      android:text="akbank sanat"/>
+
+
 </LinearLayout>
 
     </ScrollView>

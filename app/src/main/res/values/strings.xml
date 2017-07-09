@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">SiteSite</string>
+    <string name="app_name">SiteFlow</string>
+    <string name="search_title">Ara</string>
+    <string name="search_hint">search</string>
 </resources>

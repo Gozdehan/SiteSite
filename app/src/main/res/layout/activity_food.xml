@@ -1,10 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.gozdehanozturk.sitesite.FoodActivity">
+    android:layout_height="match_parent" android:layout_width="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.gozdehanozturk.sitesite.CultureArtActivity">
+        
+        <Button
+            android:id="@+id/yemeksepet"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="yemek sepeti"/>
+
+        <Button
+            android:id="@+id/sofra"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="sofra"/>
+
+        <Button
+            android:id="@+id/ytarif"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="yemek tarifleri"/>
+
+        <Button
+            android:id="@+id/nytarif"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="nefis yemek tarifleri"/>
+
+        <Button
+            android:id="@+id/yemek"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="yemek.com"/>
+
+        <Button
+            android:id="@+id/lezzet"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="lezzet.com"/>
+
+        <Button
+            android:id="@+id/fitchef"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="fıtchef"/>
+
+        <Button
+            android:id="@+id/yemekmotoru"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="yemekmotoru.com"/>
+
+        <Button
+        android:id="@+id/adreseyemek"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_background"
+        android:text="adrese yemek"/>
+
+        <Button
+            android:id="@+id/neyesem"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="ne yemek yesem"/>
+    </LinearLayout>
+
+</ScrollView>

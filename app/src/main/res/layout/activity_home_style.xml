@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent" android:layout_width="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.gozdehanozturk.sitesite.CultureArtActivity">
+
+        <Button
+            android:id="@+id/bauhaus"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="bauhaus"/>
+
+        <Button
+            android:id="@+id/bellona"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="bellona"/>
+
+        <Button
+            android:id="@+id/bernardo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="bernardo"/>
+
+        <Button
+            android:id="@+id/chakra"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="chakra"/>
+
+        <Button
+            android:id="@+id/dekorazon"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="dekorazon"/>
+        <Button
+            android:id="@+id/englishhome"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="englısh home"/>
+
+        <Button
+            android:id="@+id/enplus"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="enplus"/>
+
+        <Button
+            android:id="@+id/enza"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="enza home"/>
+
+        <Button
+            android:id="@+id/evidea"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="evıdea"/>
+
+        <Button
+            android:id="@+id/evmanya"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="evmanya"/>
+
+        <Button
+            android:id="@+id/fakir"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="fakir"/>
+
+        <Button
+            android:id="@+id/homesweet"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="home sweet home"/>
+
+        <Button
+            android:id="@+id/istikbal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="istikbal"/>
+
+        <Button
+            android:id="@+id/ikea"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="ikea"/>
+
+        <Button
+            android:id="@+id/jumbo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="jumbo"/>
+
+        <Button
+            android:id="@+id/karaca"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="karaca"/>
+
+        <Button
+            android:id="@+id/koctas"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="koçtaş"/>
+
+
+        <Button
+            android:id="@+id/korkmaz"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="korkmaz"/>
+
+        <Button
+            android:id="@+id/linens"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="linens"/>
+
+        <Button
+            android:id="@+id/coco"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="madame coco"/>
+
+        <Button
+            android:id="@+id/mudo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="mudo"/>
+
+        <Button
+            android:id="@+id/ozdilek"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="özdilek"/>
+
+        <Button
+            android:id="@+id/pasabahce"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="paşabahçe"/>
+
+        <Button
+            android:id="@+id/schafer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="schafer"/>
+
+        <Button
+            android:id="@+id/tac"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="taç"/>
+
+        <Button
+            android:id="@+id/tefal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="tefal"/>
+
+        <Button
+            android:id="@+id/yatas"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="yataş bedding"/>
+
+        <Button
+            android:id="@+id/zarahome"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_background"
+            android:text="zara home"/>
+
+    </LinearLayout>
+
+</ScrollView>
