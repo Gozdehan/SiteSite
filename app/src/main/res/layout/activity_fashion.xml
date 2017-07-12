@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    tools:context="com.gozdehanozturk.sitesite.BookActivity">
+
+    <ListView
+        android:id="@+id/fashionlistview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
+
+</RelativeLayout>
+<!--
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent" android:layout_width="match_parent">
@@ -68,5 +85,4 @@
 
     </LinearLayout>
 
-</ScrollView>
-
+</ScrollView>  -->
