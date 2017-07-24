@@ -2,18 +2,43 @@ package com.gozdehanozturk.sitesite;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gozdehanozturk.sitesite.model.ItemModel;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TravelActivity extends AppCompatActivity {
 
-    Button tatilSepeti, tatilSitesi,tatilBudur, grupanya, etstur, jollytur, anitur, trivago, uzakRota, yoldaOlmak, gezgininPusulasi;
+   DatabaseReference dref;
+    ListView mListView;
+    List<ItemModel> itemList = new ArrayList<ItemModel>();
+
+    BaseAdapter ba;
+    LayoutInflater li;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,104 +48,71 @@ public class TravelActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setTitle("Seyahat & Tatil");
 
-        tatilSepeti = (Button)findViewById(R.id.tatilsepet);
-        tatilSepeti.setOnClickListener(new View.OnClickListener() {
+
+        mListView  = (ListView)findViewById(R.id.travellistview);
+
+        li = LayoutInflater.from(this);
+
+        ba = new BaseAdapter() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.tatilsepeti.com/"));
-                startActivity(viewIntent);
+            public int getCount() {
+                return itemList.size();
+            }
+
+            @Override
+            public Object getItem(int i) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int i) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+
+                if(view==null) {
+                    view = li.inflate(R.layout.list_item, null);
+                }
+
+                ImageView image = view.findViewById(R.id.item_logo);
+
+
+                TextView text = view.findViewById(R.id.item_name);
+                text.setText(itemList.get(i).getTitle());
+
+
+                Picasso.with(TravelActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
+
+                return view;
+            }
+        };
+
+        mListView.setAdapter(ba);
+
+        dref = FirebaseDatabase.getInstance().getReference("seyahat");
+        dref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data:dataSnapshot.getChildren()){
+                    ItemModel item = data.getValue(ItemModel.class);
+                    itemList.add(item);
+                    ba.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("LOGTEST",databaseError.getMessage());
             }
         });
 
-        tatilSitesi = (Button)findViewById(R.id.tatilsitesi);
-        tatilSitesi.setOnClickListener(new View.OnClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.tatilsitesi.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        tatilBudur = (Button)findViewById(R.id.tbudur);
-        tatilBudur.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.tatilbudur.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        grupanya = (Button)findViewById(R.id.grupanya);
-        grupanya.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.grupanya.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-
-        etstur = (Button)findViewById(R.id.ets);
-        etstur.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.etstur.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        jollytur = (Button)findViewById(R.id.jolly);
-        jollytur.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.jollytur.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        anitur = (Button)findViewById(R.id.ani);
-        anitur.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.anitur.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        trivago = (Button)findViewById(R.id.trivago);
-        trivago.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.trivago.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        uzakRota = (Button)findViewById(R.id.rota);
-        uzakRota.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.uzakrota.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        yoldaOlmak = (Button)findViewById(R.id.yolda);
-        yoldaOlmak.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://yoldaolmak.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-
-        gezgininPusulasi = (Button)findViewById(R.id.pusula);
-        gezgininPusulasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://gezgininpusulasi.com/"));
-                startActivity(viewIntent);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);
             }
         });
     }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20dp"
-    tools:context="com.gozdehanozturk.sitesite.BookActivity">
+    tools:context="com.gozdehanozturk.sitesite.FashionActivity">
 
     <ListView
         android:id="@+id/fashionlistview"

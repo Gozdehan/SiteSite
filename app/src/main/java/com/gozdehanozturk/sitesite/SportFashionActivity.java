@@ -27,10 +27,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class UnderWearActivity extends AppCompatActivity {
-
-   // Button blackspade, bonprix, dagi, penti, lasenza, intimissimi, victoria, suwen, calvin, kom, nbb, oysho, loya;
-
+public class SportFashionActivity extends AppCompatActivity {
     DatabaseReference dref;
     ListView mListView;
     ArrayList<String> list = new ArrayList<>();
@@ -42,12 +39,13 @@ public class UnderWearActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_under_wear);
+        setContentView(R.layout.activity_sport_fashion);
 
         ActionBar ab = getSupportActionBar();
-        ab.setTitle("İç Giyim");
+        ab.setTitle("Spor Giyim");
 
-        mListView  = (ListView)findViewById(R.id.underwearlistview);
+
+        mListView  = (ListView)findViewById(R.id.sportfashionlistview);
         mAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,list);
 
         li = LayoutInflater.from(this);
@@ -82,7 +80,7 @@ public class UnderWearActivity extends AppCompatActivity {
                 text.setText(list.get(i));
 
 
-                Picasso.with(UnderWearActivity.this).load("https://cdn0.iconfinder.com/data/icons/clothes-and-fashion-icons/512/Clothes-28-512.png").into(image);
+                Picasso.with(SportFashionActivity.this).load("https://www.redfaire.com/assets/images/icons/icon-world-class-bi.png").into(image);
 
                 return view;
             }
@@ -90,7 +88,7 @@ public class UnderWearActivity extends AppCompatActivity {
 
         mListView.setAdapter(ba);
 
-        dref = FirebaseDatabase.getInstance().getReference("icgiyim");
+        dref = FirebaseDatabase.getInstance().getReference("sporgiyim");
         dref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -124,64 +122,67 @@ public class UnderWearActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
                     case 0:
-                        Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.blackspade.com.tr/"));
+                        Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.decathlon.com.tr/"));
                         startActivity(viewIntent);
                         break;
                     case 1:
-                        Intent viewIntent1 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.bonprix.com.tr/"));
+                        Intent viewIntent1 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.columbia.com.tr/"));
                         startActivity(viewIntent1);
                         break;
                     case 2:
-                        Intent viewIntent2 = new Intent("android.intent.action.VIEW", Uri.parse("http://explore.calvinklein.com/"));
+                        Intent viewIntent2 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.salomon.com/"));
                         startActivity(viewIntent2);
                         break;
                     case 3:
-                        Intent viewIntent3 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.dagi.com.tr/"));
+                        Intent viewIntent3 = new Intent("android.intent.action.VIEW", Uri.parse("http://shop.hummel.com.tr/"));
                         startActivity(viewIntent3);
                         break;
 
                     case 4:
-                        Intent viewIntent4 = new Intent("android.intent.action.VIEW", Uri.parse("https://world.intimissimi.com/"));
+                        Intent viewIntent4 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.jack-wolfskin.com/"));
                         startActivity(viewIntent4);
                         break;
                     case 5:
-                        Intent viewIntent5 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.kom.com.tr/"));
+                        Intent viewIntent5 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.thenorthface.com/"));
                         startActivity(viewIntent5);
                         break;
                     case 6:
-                        Intent viewIntent6 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.lasenza.com/"));
+                        Intent viewIntent6 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.newbalance.com.tr/"));
                         startActivity(viewIntent6);
                         break;
                     case 7:
-                        Intent viewIntent7 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.loya.com.tr/"));
+                        Intent viewIntent7 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.nike.com/tr/tr_tr/"));
                         startActivity(viewIntent7);
                         break;
 
                     case 8:
-                        Intent viewIntent8 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.nbb.com.tr/"));
+                        Intent viewIntent8 = new Intent("android.intent.action.VIEW", Uri.parse("https://shop.adidas.com.tr/"));
                         startActivity(viewIntent8);
                         break;
                     case 9:
-                        Intent viewIntent9 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.oysho.com/tr/"));
+                        Intent viewIntent9 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.puma.com.tr/"));
                         startActivity(viewIntent9);
                         break;
                     case 10:
-                        Intent viewIntent10 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.penti.com/"));
+                        Intent viewIntent10 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.skechers.com.tr/"));
                         startActivity(viewIntent10);
                         break;
                     case 11:
-                        Intent viewIntent11 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.suwen.com.tr/"));
+                        Intent viewIntent11 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.spx.com.tr/"));
                         startActivity(viewIntent11);
                         break;
+
                     case 12:
-                        Intent viewIntent12 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.victoriassecret.com/"));
+                        Intent viewIntent12 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.reebok.com.tr/"));
                         startActivity(viewIntent12);
+                        break;
+                    case 13:
+                        Intent viewIntent13 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.enderspor.com/"));
+                        startActivity(viewIntent13);
                         break;
                 }
             }
         });
-
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -194,7 +195,7 @@ public class UnderWearActivity extends AppCompatActivity {
 
         switch(item.getItemId()){
             case R.id.menuId:
-                Intent intent = new Intent(UnderWearActivity.this,CategoryActivity.class);
+                Intent intent = new Intent(SportFashionActivity.this,CategoryActivity.class);
                 startActivity(intent);
 
             default:

@@ -2,19 +2,43 @@ package com.gozdehanozturk.sitesite;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gozdehanozturk.sitesite.model.ItemModel;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GiftActivity extends AppCompatActivity {
 
-    Button hSepeti, cSepeti, hFabrikasi, hediyenizbizden, hKulubu, buldumduldum, birDahaSöyle, hTavsiyeleri, hDükkani, hRengi,
-    hediyehanem, hediyenikap, bridalook, budayeni, hediyeSitem;
+    DatabaseReference dref;
+    ListView mListView;
+    List<ItemModel> itemList = new ArrayList<ItemModel>();
+
+    BaseAdapter ba;
+    LayoutInflater li;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,140 +48,70 @@ public class GiftActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setTitle("Hediye");
 
-        hSepeti = (Button)findViewById(R.id.hediyesepeti);
-        hSepeti.setOnClickListener(new View.OnClickListener() {
+        li = LayoutInflater.from(this);
+
+        mListView  = (ListView)findViewById(R.id.giftlistview);
+
+        ba = new BaseAdapter() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.hediyesepeti.com/"));
-                startActivity(viewIntent);
+            public int getCount() {
+                return itemList.size();
+            }
+
+            @Override
+            public Object getItem(int i) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int i) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+
+                if(view==null) {
+                    view = li.inflate(R.layout.list_item, null);
+                }
+
+                ImageView image = view.findViewById(R.id.item_logo);
+
+
+                TextView text = view.findViewById(R.id.item_name);
+                text.setText(itemList.get(i).getTitle());
+
+
+                Picasso.with(GiftActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
+
+                return view;
+            }
+        };
+
+
+        mListView.setAdapter(ba);
+        dref = FirebaseDatabase.getInstance().getReference("hediye");
+        dref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data:dataSnapshot.getChildren()){
+                    ItemModel item = data.getValue(ItemModel.class);
+                    itemList.add(item);
+                    ba.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("LOGTEST",databaseError.getMessage());
             }
         });
 
-        cSepeti = (Button)findViewById(R.id.ciceks);
-        cSepeti.setOnClickListener(new View.OnClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.ciceksepeti.com/#"));
-                startActivity(viewIntent);
-            }
-        });
-
-        hFabrikasi = (Button)findViewById(R.id.hedfab);
-        hFabrikasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.hediyefabrikasi.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        hediyenizbizden = (Button)findViewById(R.id.hedbiz);
-        hediyenizbizden.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.hediyenizbizden.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-
-        hKulubu = (Button)findViewById(R.id.hedkulup);
-        hKulubu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.hediyekulubu.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        buldumduldum = (Button)findViewById(R.id.buldum);
-        buldumduldum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.buldumbuldum.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        birDahaSöyle = (Button)findViewById(R.id.soyle);
-        birDahaSöyle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.1dahasoyle.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        hTavsiyeleri = (Button)findViewById(R.id.hedtavsiye);
-        hTavsiyeleri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.hediyetavsiyeleri.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        hDükkani = (Button)findViewById(R.id.hDükkan);
-        hDükkani.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.hediyedukkani.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        hRengi = (Button)findViewById(R.id.hRengi);
-        hRengi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.hediyerengi.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-
-        hediyehanem = (Button)findViewById(R.id.hediyehanem);
-        hediyehanem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.hediyehanem.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        budayeni = (Button)findViewById(R.id.budayeni);
-        budayeni.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.budayeni.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        hediyenikap = (Button)findViewById(R.id.hedıyenıkap);
-        hediyenikap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.hediyenikap.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        bridalook = (Button)findViewById(R.id.bridalook);
-        bridalook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://bridalook.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        hediyeSitem = (Button)findViewById(R.id.hedıyesitem);
-        hediyeSitem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://hediyesitem.com/"));
-                startActivity(viewIntent);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);
             }
         });
     }

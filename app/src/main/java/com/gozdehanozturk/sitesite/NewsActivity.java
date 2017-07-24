@@ -2,19 +2,41 @@ package com.gozdehanozturk.sitesite;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gozdehanozturk.sitesite.model.ItemModel;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewsActivity extends AppCompatActivity {
 
-    Button onedio, aa, cnnTürk, dha, ensonhaber, gazeteoku, gercekgündem, haber7, habertürk,
-    ntv, trt, bbc, fox, cnn, cnbc, independent, huffpost, newyorktimes;
+    DatabaseReference dref;
+    ListView mListView;
+    List<ItemModel> itemList = new ArrayList<ItemModel>();
+
+    BaseAdapter ba;
+    LayoutInflater li;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,168 +46,75 @@ public class NewsActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setTitle("Haberler");
 
-        onedio = (Button)findViewById(R.id.onedio);
-        onedio.setOnClickListener(new View.OnClickListener() {
+        mListView  = (ListView)findViewById(R.id.newslistview);
+
+        li = LayoutInflater.from(this);
+
+        ba = new BaseAdapter() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://onedio.com/"));
-                startActivity(viewIntent);
+            public int getCount() {
+                return itemList.size();
+            }
+
+            @Override
+            public Object getItem(int i) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int i) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+
+                if(view==null) {
+                    view = li.inflate(R.layout.list_item, null);
+                }
+
+                ImageView image = view.findViewById(R.id.item_logo);
+
+
+                TextView text = view.findViewById(R.id.item_name);
+                text.setText(itemList.get(i).getTitle());
+
+
+                Picasso.with(NewsActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
+
+                return view;
+            }
+        };
+
+        mListView.setAdapter(ba);
+
+        dref = FirebaseDatabase.getInstance().getReference("haberler");
+        dref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data:dataSnapshot.getChildren()){
+                    ItemModel item = data.getValue(ItemModel.class);
+                    itemList.add(item);
+                    ba.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("LOGTEST",databaseError.getMessage());
             }
         });
 
-        aa = (Button)findViewById(R.id.aa);
-        aa.setOnClickListener(new View.OnClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://aa.com.tr/tr"));
-                startActivity(viewIntent);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);
             }
         });
 
-        cnnTürk = (Button)findViewById(R.id.cnn);
-        cnnTürk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.cnnturk.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        dha = (Button)findViewById(R.id.dha);
-        dha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.dha.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        ensonhaber = (Button)findViewById(R.id.ensonhbr);
-        ensonhaber.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.ensonhaber.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        gazeteoku = (Button)findViewById(R.id.gazete);
-        gazeteoku.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.gazeteoku.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        gercekgündem = (Button)findViewById(R.id.gundem);
-        gercekgündem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.gercekgundem.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        haber7 = (Button)findViewById(R.id.haber7);
-        haber7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.haber7.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        habertürk = (Button)findViewById(R.id.haberturk);
-        habertürk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.haberturk.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        ntv = (Button)findViewById(R.id.ntv);
-        ntv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.ntv.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        trt = (Button)findViewById(R.id.trt);
-        trt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.trthaber.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        bbc = (Button)findViewById(R.id.bbc);
-        bbc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.bbc.com/news"));
-                startActivity(viewIntent);
-            }
-        });
-
-        fox = (Button)findViewById(R.id.fox);
-        fox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.foxnews.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        cnn = (Button)findViewById(R.id.cnnYabanci);
-        cnn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://edition.cnn.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        cnbc = (Button)findViewById(R.id.cnbc);
-        cnbc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.cnbc.com/world/?region=world"));
-                startActivity(viewIntent);
-            }
-        });
-
-        independent = (Button)findViewById(R.id.independent);
-        independent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.independent.co.uk/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        huffpost = (Button)findViewById(R.id.huffpost);
-        huffpost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.huffingtonpost.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        newyorktimes = (Button)findViewById(R.id.newyorktimes);
-        newyorktimes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.nytimes.com/"));
-                startActivity(viewIntent);
-            }
-        });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

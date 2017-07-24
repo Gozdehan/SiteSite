@@ -98,14 +98,20 @@
             android:name=".UnderWearActivity"
             android:parentActivityName=".FashionActivity">
         </activity>
-        <activity android:name=".CarActivity"
-                  android:parentActivityName=".CategoryActivity">
+        <activity
+            android:name=".CarActivity"
+            android:parentActivityName=".CategoryActivity">
         </activity>
-        <activity android:name=".ScienceActivity"
-                  android:parentActivityName=".CategoryActivity">
+        <activity
+            android:name=".ScienceActivity"
+            android:parentActivityName=".CategoryActivity">
         </activity>
-        <activity android:name=".BookActivity"
-                  android:parentActivityName=".CategoryActivity">
+        <activity
+            android:name=".BookActivity"
+            android:parentActivityName=".CategoryActivity">
+        </activity>
+        <activity android:name=".SportFashionActivity"
+            android:parentActivityName=".FashionActivity">
         </activity>
     </application>
 

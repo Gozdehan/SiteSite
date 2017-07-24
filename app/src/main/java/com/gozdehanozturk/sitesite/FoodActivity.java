@@ -2,18 +2,43 @@ package com.gozdehanozturk.sitesite;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gozdehanozturk.sitesite.model.ItemModel;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FoodActivity extends AppCompatActivity {
 
-    Button yemekSepeti, sofra,yemekTarifleri,nefisYemekTarifleri,yemek,lezzet,fitchef,yemekMotoru,adreseYemek,neYesem;
+    DatabaseReference dref;
+    ListView mListView;
+    List<ItemModel> itemList = new ArrayList<ItemModel>();
+
+    BaseAdapter ba;
+    LayoutInflater li;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,93 +48,73 @@ public class FoodActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setTitle("Yemek");
 
-        yemekSepeti = (Button)findViewById(R.id.yemeksepet);
-        yemekSepeti.setOnClickListener(new View.OnClickListener() {
+        li = LayoutInflater.from(this);
+
+
+        mListView  = (ListView)findViewById(R.id.foodlistview);
+
+
+        ba = new BaseAdapter() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.yemeksepeti.com/"));
-                startActivity(viewIntent);
+            public int getCount() {
+                return itemList.size();
+            }
+
+            @Override
+            public Object getItem(int i) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int i) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+
+                if(view==null) {
+                    view = li.inflate(R.layout.list_item, null);
+                }
+
+                ImageView image = view.findViewById(R.id.item_logo);
+
+
+                TextView text = view.findViewById(R.id.item_name);
+                text.setText(itemList.get(i).getTitle());
+
+
+                Picasso.with(FoodActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
+
+                return view;
+            }
+        };
+
+
+        mListView.setAdapter(ba);
+
+        dref = FirebaseDatabase.getInstance().getReference("yemek");
+        dref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data:dataSnapshot.getChildren()){
+                    ItemModel item = data.getValue(ItemModel.class);
+                    itemList.add(item);
+                    ba.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("LOGTEST",databaseError.getMessage());
             }
         });
 
-        sofra = (Button)findViewById(R.id.sofra);
-        sofra.setOnClickListener(new View.OnClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.sofra.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        yemekTarifleri = (Button)findViewById(R.id.ytarif);
-        yemekTarifleri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.yemektarifleri.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        nefisYemekTarifleri = (Button)findViewById(R.id.nytarif);
-        nefisYemekTarifleri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.nefisyemektarifleri.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        yemek = (Button)findViewById(R.id.yemek);
-        yemek.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://yemek.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        lezzet = (Button)findViewById(R.id.lezzet);
-        lezzet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.lezzet.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        fitchef = (Button)findViewById(R.id.fitchef);
-        fitchef.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://fitchef.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        yemekMotoru = (Button)findViewById(R.id.yemekmotoru);
-        yemekMotoru.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.yemekmotoru.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        adreseYemek = (Button)findViewById(R.id.adreseyemek);
-        adreseYemek.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.adreseyemek.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        neYesem = (Button)findViewById(R.id.neyesem);
-        neYesem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.neyemekyesem.com/"));
-                startActivity(viewIntent);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);
             }
         });
     }

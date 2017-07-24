@@ -2,18 +2,41 @@ package com.gozdehanozturk.sitesite;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gozdehanozturk.sitesite.model.ItemModel;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShopActivity extends AppCompatActivity {
 
-    Button ebay, amazon, aliex, hepsiburada, n11, gittigidiyor, hızlıal, morhipo, trendyol, markafoni, shop;
+    DatabaseReference dref;
+    ListView mListView;
+    List<ItemModel> itemList = new ArrayList<ItemModel>();
+
+    BaseAdapter ba;
+    LayoutInflater li;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,108 +46,80 @@ public class ShopActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setTitle("E-Alışveriş");
 
-        ebay = (Button)findViewById(R.id.ebay);
-        ebay.setOnClickListener(new View.OnClickListener() {
+        mListView  = (ListView)findViewById(R.id.shoplistview);
+        li = LayoutInflater.from(this);
+
+        ba = new BaseAdapter() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.ebay.com/"));
-                startActivity(viewIntent);
+            public int getCount() {
+                return itemList.size();
             }
-        });
 
-        amazon = (Button)findViewById(R.id.amazon);
-        amazon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.amazon.com/"));
-                startActivity(viewIntent);
+            public Object getItem(int i) {
+                return null;
             }
-        });
 
-        aliex = (Button)findViewById(R.id.aliex);
-        aliex.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://tr.aliexpress.com/"));
-                startActivity(viewIntent);
+            public long getItemId(int i) {
+                return 0;
             }
-        });
 
-
-        hepsiburada = (Button)findViewById(R.id.hepsib);
-        hepsiburada.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.hepsiburada.com/"));
-                startActivity(viewIntent);
+            public View getView(int i, View view, ViewGroup viewGroup) {
+
+                if(view==null) {
+                    view = li.inflate(R.layout.list_item, null);
+                }
+
+                ImageView image = view.findViewById(R.id.item_logo);
+
+                TextView text = view.findViewById(R.id.item_name);
+                text.setText(itemList.get(i).getTitle());
+
+
+                Picasso.with(ShopActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
+
+                return view;
             }
-        });
+        };
 
-        n11 = (Button)findViewById(R.id.n11);
-        n11.setOnClickListener(new View.OnClickListener() {
+        mListView.setAdapter(ba);
+
+
+        dref = FirebaseDatabase.getInstance().getReference("alisveris");
+        dref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.n11.com/"));
-                startActivity(viewIntent);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data:dataSnapshot.getChildren()){
+                    Log.d("LOGTEST","item" + data.toString());
+                    ItemModel item = data.getValue(ItemModel.class);
+                    Log.d("LOGTEST",item.getTitle());
+                    Log.d("LOGTEST",item.getSiteUrl());
+                    Log.d("LOGTEST",item.getLogoUrl());
+                    itemList.add(item);
+                    ba.notifyDataSetChanged();
+                    Log.d("LOGTEST", String.valueOf(itemList.size()));
+
+                }
             }
-        });
 
-        gittigidiyor = (Button)findViewById(R.id.gittigidiyor);
-        gittigidiyor.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.gittigidiyor.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        hızlıal = (Button)findViewById(R.id.hizlial);
-        hızlıal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.hizlial.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        morhipo = (Button)findViewById(R.id.morhipo);
-        morhipo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.morhipo.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        trendyol = (Button)findViewById(R.id.trendyol);
-        trendyol.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.trendyol.com/"));
-                startActivity(viewIntent);
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("LOGTEST",databaseError.getMessage());
             }
         });
 
 
-        markafoni = (Button)findViewById(R.id.markafoni);
-        markafoni.setOnClickListener(new View.OnClickListener() {
+
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.markafoni.com/"));
-                startActivity(viewIntent);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);
             }
         });
-
-        shop = (Button)findViewById(R.id.shopnord);
-        shop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://shop.nordstrom.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-
 
     }
     @Override

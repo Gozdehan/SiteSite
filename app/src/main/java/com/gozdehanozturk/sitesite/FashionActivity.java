@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -69,6 +71,44 @@ public class FashionActivity extends AppCompatActivity {
             }
         });
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i){
+                    case 0:
+                        Intent intent = new Intent(FashionActivity.this,ShoesBagActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        Intent intent1 = new Intent(FashionActivity.this,ClothesActivity.class);
+                        startActivity(intent1);
+                        break;
+                    case 2:
+                        Intent intent2 = new Intent(FashionActivity.this,WomanFashionActivity.class);
+                        startActivity(intent2);
+                        break;
+                    case 3:
+                        Intent intent3 = new Intent(FashionActivity.this,ManFashionActivity.class);
+                        startActivity(intent3);
+                        break;
+                    case 4:
+                        Intent intent4 = new Intent(FashionActivity.this,SportFashionActivity.class);
+                        startActivity(intent4);
+                        break;
+                    case 5:
+                        Intent intent5 = new Intent(FashionActivity.this,UnderWearActivity.class);
+                        startActivity(intent5);
+                        break;
+                    case 6:
+                        Intent intent6 = new Intent(FashionActivity.this,MAKActivity.class);
+                        startActivity(intent6);
+                        break;
+                }
+            }
+        });
+    }
+
+
        /* shoesBag = (Button)findViewById(R.id.ayakkabicanta);
         shoesBag.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,8 +152,10 @@ public class FashionActivity extends AppCompatActivity {
                 Intent viewIntent = new Intent(FashionActivity.this,UnderWearActivity.class);
                 startActivity(viewIntent);
             }
-        });  */
-    }
+        });
+         }
+         */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

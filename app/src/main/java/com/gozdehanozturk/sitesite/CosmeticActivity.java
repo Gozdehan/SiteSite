@@ -2,17 +2,43 @@ package com.gozdehanozturk.sitesite;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gozdehanozturk.sitesite.model.ItemModel;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CosmeticActivity extends AppCompatActivity {
-    Button yves, rossman, watsons, gratis, flormar, goldenrose, mac, six, avon, bodyshop, tshop, tekinacar, sephora, clinique;
+
+    DatabaseReference dref;
+    ListView mListView;
+    List<ItemModel> itemList = new ArrayList<ItemModel>();
+
+    BaseAdapter ba;
+    LayoutInflater li;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,130 +48,73 @@ public class CosmeticActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setTitle("Kozmetik");
 
-        yves = (Button)findViewById(R.id.yves);
-        yves.setOnClickListener(new View.OnClickListener() {
+        li = LayoutInflater.from(this);
+
+        mListView  = (ListView)findViewById(R.id.cosmeticlistview);
+
+
+        ba = new BaseAdapter() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.yvesrocher.com.tr/control/main/"));
-                startActivity(viewIntent);
+            public int getCount() {
+                return itemList.size();
+            }
+
+            @Override
+            public Object getItem(int i) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int i) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+
+                if(view==null) {
+                    view = li.inflate(R.layout.list_item, null);
+                }
+
+                ImageView image = view.findViewById(R.id.item_logo);
+
+
+                TextView text = view.findViewById(R.id.item_name);
+                text.setText(itemList.get(i).getTitle());
+
+
+                Picasso.with(CosmeticActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
+
+                return view;
+            }
+        };
+
+
+        mListView.setAdapter(ba);
+
+
+        dref = FirebaseDatabase.getInstance().getReference("kozmetik");
+        dref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data:dataSnapshot.getChildren()){
+                    ItemModel item = data.getValue(ItemModel.class);
+                    itemList.add(item);
+                    ba.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("LOGTEST",databaseError.getMessage());
             }
         });
 
-        six = (Button)findViewById(R.id.six);
-        six.setOnClickListener(new View.OnClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://sixkozmetik.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        rossman = (Button)findViewById(R.id.rossman);
-        rossman.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.rossmann.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        watsons = (Button)findViewById(R.id.watsons);
-        watsons.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.watsons.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-
-        gratis = (Button)findViewById(R.id.gratis);
-        gratis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.gratis.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        flormar = (Button)findViewById(R.id.flormar);
-        flormar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.flormar.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        goldenrose = (Button)findViewById(R.id.golden);
-        goldenrose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.goldenrose.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        mac = (Button)findViewById(R.id.mac);
-        mac.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.maccosmetics.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        avon = (Button)findViewById(R.id.avon);
-        avon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://kozmetik.avon.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        bodyshop = (Button)findViewById(R.id.bodyshop);
-        bodyshop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.thebodyshop.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        tshop = (Button)findViewById(R.id.tshop);
-        tshop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.tshop.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        tekinacar = (Button)findViewById(R.id.tekin);
-        tekinacar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.tekinacar.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        sephora = (Button)findViewById(R.id.sephora);
-        sephora.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.sephora.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        clinique = (Button)findViewById(R.id.clinique);
-        clinique.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.clinique.com.tr/"));
-                startActivity(viewIntent);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);
             }
         });
 

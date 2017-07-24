@@ -2,19 +2,43 @@ package com.gozdehanozturk.sitesite;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gozdehanozturk.sitesite.model.ItemModel;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TechActivity extends AppCompatActivity {
 
-    Button webrazzi, shiftdelete, chiponline, donanimhaber, teknoSeyir, teknolojihaber, veteknoloji, teknokulis, teknotoday,
-    teknosa, mediamarkt, bimeks;
+    DatabaseReference dref;
+    ListView mListView;
+    List<ItemModel> itemList = new ArrayList<ItemModel>();
+
+    BaseAdapter ba;
+    LayoutInflater li;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,102 +48,72 @@ public class TechActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setTitle("Teknoloji");
 
-        webrazzi = (Button)findViewById(R.id.webrazzi);
-        webrazzi.setOnClickListener(new View.OnClickListener() {
+
+        mListView  = (ListView)findViewById(R.id.techlistview);
+
+
+        li = LayoutInflater.from(this);
+
+        ba = new BaseAdapter() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://webrazzi.com/"));
-                startActivity(viewIntent);
+            public int getCount() {
+                return itemList.size();
+            }
+
+            @Override
+            public Object getItem(int i) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int i) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+
+                if(view==null) {
+                    view = li.inflate(R.layout.list_item, null);
+                }
+
+                ImageView image = view.findViewById(R.id.item_logo);
+
+
+                TextView text = view.findViewById(R.id.item_name);
+                text.setText(itemList.get(i).getTitle());
+
+
+                Picasso.with(TechActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
+
+                return view;
+            }
+        };
+
+        mListView.setAdapter(ba);
+
+        dref = FirebaseDatabase.getInstance().getReference("teknoloji");
+        dref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data:dataSnapshot.getChildren()){
+                    ItemModel item = data.getValue(ItemModel.class);
+                    itemList.add(item);
+                    ba.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("LOGTEST",databaseError.getMessage());
             }
         });
 
-        shiftdelete = (Button)findViewById(R.id.shift);
-        shiftdelete.setOnClickListener(new View.OnClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://shiftdelete.net/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        donanimhaber = (Button)findViewById(R.id.donanım);
-        donanimhaber.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.donanimhaber.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        teknoSeyir = (Button)findViewById(R.id.teknoSeyir);
-        teknoSeyir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://teknoseyir.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        teknolojihaber = (Button)findViewById(R.id.techhaber);
-        teknolojihaber.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.teknolojihaber.org/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        veteknoloji = (Button)findViewById(R.id.vetech);
-        veteknoloji.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.veteknoloji.net/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        teknokulis = (Button)findViewById(R.id.kulis);
-        teknokulis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.teknokulis.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        teknotoday = (Button)findViewById(R.id.today);
-        teknotoday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://technotoday.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        teknosa = (Button)findViewById(R.id.teknosa);
-        teknosa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.teknosa.com/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        mediamarkt = (Button)findViewById(R.id.media);
-        mediamarkt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.mediamarkt.com.tr/"));
-                startActivity(viewIntent);
-            }
-        });
-
-        bimeks = (Button)findViewById(R.id.bimeks);
-        bimeks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.bimeks.com.tr/"));
-                startActivity(viewIntent);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);
             }
         });
     }
