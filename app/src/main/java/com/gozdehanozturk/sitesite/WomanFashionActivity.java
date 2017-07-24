@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,18 +24,19 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gozdehanozturk.sitesite.model.ItemModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WomanFashionActivity extends AppCompatActivity {
 
-  //  Button adilısık, batik, faiksonmez, forevernew, ipekyol, oleg, oxxo, pologarage, roman, twist, yargici, veromoda;
 
     DatabaseReference dref;
     ListView mListView;
-    ArrayList<String> list = new ArrayList<>();
-    ArrayAdapter<String> mAdapter;
+    List<ItemModel> itemList = new ArrayList<ItemModel>();
 
     BaseAdapter ba;
     LayoutInflater li;
@@ -48,14 +50,13 @@ public class WomanFashionActivity extends AppCompatActivity {
         ab.setTitle("Kadın Giyim");
 
         mListView  = (ListView)findViewById(R.id.womanfashionlistview);
-        mAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,list);
 
         li = LayoutInflater.from(this);
 
         ba = new BaseAdapter() {
             @Override
             public int getCount() {
-                return list.size();
+                return itemList.size();
             }
 
             @Override
@@ -79,10 +80,10 @@ public class WomanFashionActivity extends AppCompatActivity {
 
 
                 TextView text = view.findViewById(R.id.item_name);
-                text.setText(list.get(i));
+                text.setText(itemList.get(i).getTitle());
 
 
-                Picasso.with(WomanFashionActivity.this).load("https://cdn0.iconfinder.com/data/icons/clothes-and-fashion-icons/512/Clothes-16-512.png").into(image);
+                Picasso.with(WomanFashionActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
 
                 return view;
             }
@@ -91,89 +92,27 @@ public class WomanFashionActivity extends AppCompatActivity {
         mListView.setAdapter(ba);
 
         dref = FirebaseDatabase.getInstance().getReference("kadingiyim");
-        dref.addChildEventListener(new ChildEventListener() {
+        dref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                list.add(dataSnapshot.getValue().toString());
-                ba.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data:dataSnapshot.getChildren()){
+                    ItemModel item = data.getValue(ItemModel.class);
+                    itemList.add(item);
+                    ba.notifyDataSetChanged();
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.d("LOGTEST",databaseError.getMessage());
             }
         });
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i){
-                    case 0:
-                        Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.adl.com.tr/tr/"));
-                        startActivity(viewIntent);
-                        break;
-                    case 1:
-                        Intent viewIntent1 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.batik.com.tr/"));
-                        startActivity(viewIntent1);
-                        break;
-                    case 2:
-                        Intent viewIntent2 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.faiksonmez.com/"));
-                        startActivity(viewIntent2);
-                        break;
-                    case 3:
-                        Intent viewIntent3 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.forevernew.com.tr/"));
-                        startActivity(viewIntent3);
-                        break;
-
-                    case 4:
-                        Intent viewIntent4 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.ipekyol.com.tr/"));
-                        startActivity(viewIntent4);
-                        break;
-                    case 5:
-                        Intent viewIntent5 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.olegcassini.com.tr/"));
-                        startActivity(viewIntent5);
-                        break;
-                    case 6:
-                        Intent viewIntent6 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.oxxo.com.tr/"));
-                        startActivity(viewIntent6);
-                        break;
-                    case 7:
-                        Intent viewIntent7 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.pologarage.com/"));
-                        startActivity(viewIntent7);
-                        break;
-
-                    case 8:
-                        Intent viewIntent8 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.roman.com.tr/"));
-                        startActivity(viewIntent8);
-                        break;
-                    case 9:
-                        Intent viewIntent9 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.twist.com.tr/"));
-                        startActivity(viewIntent9);
-                        break;
-                    case 10:
-                        Intent viewIntent10 = new Intent("android.intent.action.VIEW", Uri.parse("https://www.veromoda.com/on/demandware.store/Sites-vm-root-Site/default/Country-Show"));
-                        startActivity(viewIntent10);
-                        break;
-                    case 11:
-                        Intent viewIntent11 = new Intent("android.intent.action.VIEW", Uri.parse("http://www.yargici.com.tr/"));
-                        startActivity(viewIntent11);
-                        break;
-                }
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);
             }
         });
 

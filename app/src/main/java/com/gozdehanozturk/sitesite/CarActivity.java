@@ -91,8 +91,6 @@ public class CarActivity extends AppCompatActivity {
         mListView.setAdapter(ba);
 
         dref = FirebaseDatabase.getInstance().getReference("otomobil");
-
-        dref = FirebaseDatabase.getInstance().getReference("hediye");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

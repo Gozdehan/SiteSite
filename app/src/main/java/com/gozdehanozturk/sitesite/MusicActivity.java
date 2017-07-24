@@ -29,7 +29,6 @@ import java.util.ArrayList;
 
 public class MusicActivity extends AppCompatActivity {
 
-   // Button spotify, fizy, türktelekom, deezer, classical,youtube, tunein,justhearit, dashradio, tracks8, lastfm, soundcloud, hypem, gaana, bandcamp, müzikdinletv, slacker, myspace, müsicovery, jango, müsixhub, difm, radiotuna, live365, jazzradio;
    DatabaseReference dref;
     ListView mListView;
     ArrayList<String> list = new ArrayList<>();
