@@ -3,28 +3,113 @@ package com.gozdehanozturk.sitesite;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gozdehanozturk.sitesite.model.ItemModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryActivity extends AppCompatActivity {
-    List<Category> mCategoryList;
+
+    DatabaseReference dref;
+    ListView mListView;
+    List<ItemModel> itemList = new ArrayList<ItemModel>();
+
+
+    BaseAdapter ba;
+    LayoutInflater li;
+
+    /*List<Category> mCategoryList;
     ListView mListView;
 
     public static final Integer [] categoryPic = {R.drawable.palette, R.drawable.books, R.drawable.dvr,R.drawable.beach,R.drawable.star, R.drawable.bubble_chart,R.drawable.ic_fitness,R.drawable.restaurant,R.drawable.devices, R.drawable.wb, R.drawable.movie_creation,R.drawable.music_note,R.drawable.giftcard,R.drawable.shopping_cart,R.drawable.healing,R.drawable.home, R.drawable.car};
-    public static final String [] categoryName = {"KÜLTÜR & SANAT", "KİTAP & DERGİ", "HABERLER", "SEYAHAT & TATİL","MODA","KOZMETİK", "SPOR", "YEMEK","TEKNOLOJİ", "BİLİM", "FİLM & DİZİ","MÜZİK","HEDİYE","E-ALIŞVERİŞ","SAĞLIK","EV TEKSTİLİ", "OTOMOBİL"};
+    public static final String [] categoryName = {"KÜLTÜR & SANAT", "KİTAP & DERGİ", "HABERLER", "SEYAHAT & TATİL","MODA","KOZMETİK", "SPOR", "YEMEK","TEKNOLOJİ", "BİLİM", "FİLM & DİZİ","MÜZİK","HEDİYE","E-ALIŞVERİŞ","SAĞLIK","EV TEKSTİLİ", "OTOMOBİL"};  */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        mListView = (ListView)findViewById(R.id.categoryListView);
+        li = LayoutInflater.from(this);
+
+        mListView  = (ListView)findViewById(R.id.categoryListView);
+
+
+        ba = new BaseAdapter() {
+            @Override
+            public int getCount() {
+                return itemList.size();
+            }
+
+            @Override
+            public Object getItem(int i) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int i) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+
+                if(view==null) {
+                    view = li.inflate(R.layout.category_list_item, null);
+                }
+
+                ImageView image = view.findViewById(R.id.categoryId);
+
+
+                TextView text = view.findViewById(R.id.category);
+                text.setText(itemList.get(i).getTitle());
+
+
+                Picasso.with(CategoryActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
+
+                return view;
+            }
+        };
+
+
+        mListView.setAdapter(ba);
+
+
+        dref = FirebaseDatabase.getInstance().getReference("kategori");
+        dref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data:dataSnapshot.getChildren()){
+                    ItemModel item = data.getValue(ItemModel.class);
+                    itemList.add(item);
+                    ba.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("LOGTEST",databaseError.getMessage());
+            }
+        });
+
+     /*   mListView = (ListView)findViewById(R.id.categoryListView);
         mCategoryList = new ArrayList<Category>();
 
         for (int i = 0; i<categoryName.length;i++){
@@ -33,7 +118,7 @@ public class CategoryActivity extends AppCompatActivity {
         }
 
         CategoryAdapter categoryAdapter = new CategoryAdapter(this,mCategoryList);
-        mListView.setAdapter(categoryAdapter);
+        mListView.setAdapter(categoryAdapter);  */
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
