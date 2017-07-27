@@ -1,8 +1,12 @@
 package com.gozdehanozturk.sitesite;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -21,7 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.gozdehanozturk.sitesite.model.ItemModel;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.squareup.picasso.Picasso;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +39,7 @@ public class CategoryActivity extends AppCompatActivity {
     ListView mListView;
     List<ItemModel> itemList = new ArrayList<ItemModel>();
 
+    private AVLoadingIndicatorView avi;
 
     BaseAdapter ba;
     LayoutInflater li;
@@ -44,15 +52,19 @@ public class CategoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+
+        avi= (AVLoadingIndicatorView) findViewById(R.id.avi);
+        avi.setIndicator("");
 
         li = LayoutInflater.from(this);
 
         mListView  = (ListView)findViewById(R.id.categoryListView);
 
+            ba = new BaseAdapter() {
 
-        ba = new BaseAdapter() {
             @Override
             public int getCount() {
                 return itemList.size();
@@ -77,25 +89,26 @@ public class CategoryActivity extends AppCompatActivity {
 
                 ImageView image = view.findViewById(R.id.categoryId);
 
-
                 TextView text = view.findViewById(R.id.category);
                 text.setText(itemList.get(i).getTitle());
-
 
                 Picasso.with(CategoryActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
 
                 return view;
+
             }
         };
 
 
         mListView.setAdapter(ba);
 
-
+        avi.setVisibility(View.VISIBLE);
+        avi.show();
         dref = FirebaseDatabase.getInstance().getReference("kategori");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                avi.hide();
                 for(DataSnapshot data:dataSnapshot.getChildren()){
                     ItemModel item = data.getValue(ItemModel.class);
                     itemList.add(item);

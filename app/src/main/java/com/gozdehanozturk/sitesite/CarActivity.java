@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.gozdehanozturk.sitesite.model.ItemModel;
 import com.squareup.picasso.Picasso;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,8 +111,14 @@ public class CarActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                /*Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);*/
+
+                Intent intent = new Intent(CarActivity.this,WebViewActivity.class);
+                intent.putExtra("url",itemList.get(i).getSiteUrl());
+                intent.putExtra("title",itemList.get(i).getTitle());
                 startActivity(intent);
+
             }
         });
     }

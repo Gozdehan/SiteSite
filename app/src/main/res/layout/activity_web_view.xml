@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.gozdehanozturk.sitesite.CategoryActivity">
+    tools:context="com.gozdehanozturk.sitesite.WebViewActivity">
 
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/avi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:indicatorName="BallPulseIndicator"
+        app:indicatorName="BallTrianglePathIndicator"
         app:indicatorColor="@color/colorPrimary"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        android:layout_centerInParent="true" />
 
-    <ListView
-        android:id="@+id/categoryListView"
+    <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
 </RelativeLayout>
