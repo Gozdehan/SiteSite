@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/item_logo"
         android:background="#FFFFFF"
-        android:paddingLeft="7dp"
+
         android:layout_width="54dp"
         android:layout_height="54dp"/>
 

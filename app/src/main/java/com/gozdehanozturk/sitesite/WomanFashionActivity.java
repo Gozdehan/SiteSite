@@ -111,7 +111,11 @@ public class WomanFashionActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+               /* Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);  */
+                Intent intent = new Intent(WomanFashionActivity.this,WebViewActivity.class);
+                intent.putExtra("url",itemList.get(i).getSiteUrl());
+                intent.putExtra("title",itemList.get(i).getTitle());
                 startActivity(intent);
             }
         });

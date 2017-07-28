@@ -113,7 +113,11 @@ public class FoodActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+              /*  Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);  */
+                Intent intent = new Intent(FoodActivity.this,WebViewActivity.class);
+                intent.putExtra("url",itemList.get(i).getSiteUrl());
+                intent.putExtra("title",itemList.get(i).getTitle());
                 startActivity(intent);
             }
         });

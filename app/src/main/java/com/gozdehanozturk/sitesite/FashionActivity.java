@@ -4,30 +4,40 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gozdehanozturk.sitesite.model.ItemModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FashionActivity extends AppCompatActivity {
 
     DatabaseReference dref;
     ListView mListView;
-    ArrayList<String> list = new ArrayList<>();
-    ArrayAdapter<String> mAdapter;
+    List<ItemModel> itemList = new ArrayList<ItemModel>();
 
-   // Button shoesBag, clothes, manFashion, womanFashion, underWear;
+    BaseAdapter ba;
+    LayoutInflater li;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,39 +47,66 @@ public class FashionActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setTitle("Moda");
 
+        li = LayoutInflater.from(this);
+
         mListView  = (ListView)findViewById(R.id.fashionlistview);
-        mAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,list);
-        mListView.setAdapter(mAdapter);
+
+        ba = new BaseAdapter() {
+            @Override
+            public int getCount() {
+                return itemList.size();
+            }
+
+            @Override
+            public Object getItem(int i) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int i) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+
+                if(view==null) {
+                    view = li.inflate(R.layout.list_item, null);
+                }
+
+                ImageView image = view.findViewById(R.id.item_logo);
+
+
+                TextView text = view.findViewById(R.id.item_name);
+                text.setText(itemList.get(i).getTitle());
+
+
+                Picasso.with(FashionActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
+
+                return view;
+            }
+        };
+
+        mListView.setAdapter(ba);
 
         dref = FirebaseDatabase.getInstance().getReference("moda");
-        dref.addChildEventListener(new ChildEventListener() {
+        dref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                String value = dataSnapshot.getValue(String.class);
-                list.add(value);
-                mAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data: dataSnapshot.getChildren()){
+                    ItemModel item = data.getValue(ItemModel.class);
+                    itemList.add(item);
+                    ba.notifyDataSetChanged();
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.d("LOGTEST",databaseError.getMessage());
             }
         });
+
+
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -107,54 +144,6 @@ public class FashionActivity extends AppCompatActivity {
             }
         });
     }
-
-
-       /* shoesBag = (Button)findViewById(R.id.ayakkabicanta);
-        shoesBag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent(FashionActivity.this,ShoesBagActivity.class);
-                startActivity(viewIntent);
-            }
-        });
-
-        manFashion = (Button)findViewById(R.id.erkekgiyim);
-        manFashion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent(FashionActivity.this,ManFashionActivity.class);
-                startActivity(viewIntent);
-            }
-        });
-
-        clothes = (Button)findViewById(R.id.giyim);
-        clothes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent(FashionActivity.this,ClothesActivity.class);
-                startActivity(viewIntent);
-            }
-        });
-
-        womanFashion = (Button)findViewById(R.id.kadingiyim);
-        womanFashion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent(FashionActivity.this,WomanFashionActivity.class);
-                startActivity(viewIntent);
-            }
-        });
-
-        underWear = (Button)findViewById(R.id.icgiyim);
-        underWear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent viewIntent = new Intent(FashionActivity.this,UnderWearActivity.class);
-                startActivity(viewIntent);
-            }
-        });
-         }
-         */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

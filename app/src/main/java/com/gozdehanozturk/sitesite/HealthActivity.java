@@ -91,7 +91,6 @@ public class HealthActivity extends AppCompatActivity {
         mListView.setAdapter(ba);
 
         dref = FirebaseDatabase.getInstance().getReference("saglik");
-        dref = FirebaseDatabase.getInstance().getReference("hediye");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -111,7 +110,11 @@ public class HealthActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+              /*  Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(itemList.get(i).getSiteUrl()));
+                startActivity(intent);  */
+                Intent intent = new Intent(HealthActivity.this,WebViewActivity.class);
+                intent.putExtra("url",itemList.get(i).getSiteUrl());
+                intent.putExtra("title",itemList.get(i).getTitle());
                 startActivity(intent);
             }
         });
