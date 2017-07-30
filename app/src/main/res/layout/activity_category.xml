@@ -16,6 +16,23 @@
         android:layout_centerInParent="true"
         android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/internet_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/internet_status"
+        android:text="TRY AGAIN"
+        android:visibility="gone"/>
+
     <ListView
         android:id="@+id/categoryListView"
         android:layout_width="match_parent"

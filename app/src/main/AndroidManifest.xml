@@ -3,6 +3,8 @@
     package="com.gozdehanozturk.sitesite">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,86 +13,88 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CategoryActivity">
+        <activity android:name=".CategoryActivity" />
+        <activity
+            android:name=".CultureArtActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".NewsActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".SportActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".TravelActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".FoodActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".TechActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".MovieActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".MusicActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".GiftActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".ShopActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".HealthActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".HomeStyleActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".MAKActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".CosmeticActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".FashionActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".ManFashionActivity"
+            android:parentActivityName=".FashionActivity" />
+        <activity
+            android:name=".ShoesBagActivity"
+            android:parentActivityName=".FashionActivity" />
+        <activity
+            android:name=".WomanFashionActivity"
+            android:parentActivityName=".FashionActivity" />
+        <activity
+            android:name=".ClothesActivity"
+            android:parentActivityName=".FashionActivity" />
+        <activity
+            android:name=".UnderWearActivity"
+            android:parentActivityName=".FashionActivity" />
+        <activity
+            android:name=".CarActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".ScienceActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".BookActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity
+            android:name=".SportFashionActivity"
+            android:parentActivityName=".FashionActivity" />
+        <activity android:name=".WebViewActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".CultureArtActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".NewsActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".SportActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".TravelActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".FoodActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".TechActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".MovieActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".MusicActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".GiftActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".ShopActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".HealthActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".HomeStyleActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".MAKActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".CosmeticActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".FashionActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".ManFashionActivity"
-            android:parentActivityName=".FashionActivity"></activity>
-        <activity
-            android:name=".ShoesBagActivity"
-            android:parentActivityName=".FashionActivity"></activity>
-        <activity
-            android:name=".WomanFashionActivity"
-            android:parentActivityName=".FashionActivity"></activity>
-        <activity
-            android:name=".ClothesActivity"
-            android:parentActivityName=".FashionActivity"></activity>
-        <activity
-            android:name=".UnderWearActivity"
-            android:parentActivityName=".FashionActivity"></activity>
-        <activity
-            android:name=".CarActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".ScienceActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".BookActivity"
-            android:parentActivityName=".CategoryActivity"></activity>
-        <activity
-            android:name=".SportFashionActivity"
-            android:parentActivityName=".FashionActivity"></activity>
-        <activity android:name=".WebViewActivity"></activity>
+        <activity android:name=".NoConnectActivity"></activity>
     </application>
 
 </manifest>

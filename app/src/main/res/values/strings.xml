@@ -2,4 +2,5 @@
     <string name="app_name">SiteFlow</string>
     <string name="search_title">Ara</string>
     <string name="search_hint">search</string>
+    <string name="connect">İnternete Bağlı Değilsiniz! Bağlantınızı Kontrol Edin!</string>
 </resources>

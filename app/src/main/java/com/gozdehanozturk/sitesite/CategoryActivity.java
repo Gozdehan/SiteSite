@@ -1,8 +1,11 @@
 package com.gozdehanozturk.sitesite;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -15,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -39,16 +43,13 @@ public class CategoryActivity extends AppCompatActivity {
     ListView mListView;
     List<ItemModel> itemList = new ArrayList<ItemModel>();
 
+    private static TextView internetStatus;
+    Button again;
+
     private AVLoadingIndicatorView avi;
 
     BaseAdapter ba;
     LayoutInflater li;
-
-    /*List<Category> mCategoryList;
-    ListView mListView;
-
-    public static final Integer [] categoryPic = {R.drawable.palette, R.drawable.books, R.drawable.dvr,R.drawable.beach,R.drawable.star, R.drawable.bubble_chart,R.drawable.ic_fitness,R.drawable.restaurant,R.drawable.devices, R.drawable.wb, R.drawable.movie_creation,R.drawable.music_note,R.drawable.giftcard,R.drawable.shopping_cart,R.drawable.healing,R.drawable.home, R.drawable.car};
-    public static final String [] categoryName = {"KÜLTÜR & SANAT", "KİTAP & DERGİ", "HABERLER", "SEYAHAT & TATİL","MODA","KOZMETİK", "SPOR", "YEMEK","TEKNOLOJİ", "BİLİM", "FİLM & DİZİ","MÜZİK","HEDİYE","E-ALIŞVERİŞ","SAĞLIK","EV TEKSTİLİ", "OTOMOBİL"};  */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,17 +122,6 @@ public class CategoryActivity extends AppCompatActivity {
                 Log.d("LOGTEST",databaseError.getMessage());
             }
         });
-
-     /*   mListView = (ListView)findViewById(R.id.categoryListView);
-        mCategoryList = new ArrayList<Category>();
-
-        for (int i = 0; i<categoryName.length;i++){
-            Category category = new Category(categoryPic[i],categoryName[i]);
-            mCategoryList.add(category);
-        }
-
-        CategoryAdapter categoryAdapter = new CategoryAdapter(this,mCategoryList);
-        mListView.setAdapter(categoryAdapter);  */
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
