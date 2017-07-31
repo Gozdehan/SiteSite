@@ -30,10 +30,11 @@ public class WebViewActivity extends AppCompatActivity {
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setBuiltInZoomControls(true);
 
         avi.show();
         webView.loadUrl(url);
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
@@ -42,4 +43,6 @@ public class WebViewActivity extends AppCompatActivity {
             }
         });
     }
+
 }
+

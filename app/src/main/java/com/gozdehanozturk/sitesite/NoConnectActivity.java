@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.wang.avi.AVLoadingIndicatorView;
+
 public class NoConnectActivity extends AppCompatActivity {
     Button mConnect;
 

@@ -43,9 +43,6 @@ public class CategoryActivity extends AppCompatActivity {
     ListView mListView;
     List<ItemModel> itemList = new ArrayList<ItemModel>();
 
-    private static TextView internetStatus;
-    Button again;
-
     private AVLoadingIndicatorView avi;
 
     BaseAdapter ba;

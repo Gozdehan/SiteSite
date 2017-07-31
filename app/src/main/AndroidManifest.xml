@@ -16,85 +16,113 @@
         <activity android:name=".CategoryActivity" />
         <activity
             android:name=".CultureArtActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".NewsActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".SportActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".TravelActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".FoodActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".TechActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".MovieActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".MusicActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".GiftActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".ShopActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".HealthActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".HomeStyleActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".MAKActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".CosmeticActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".FashionActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".ManFashionActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".FashionActivity" />
         <activity
             android:name=".ShoesBagActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".FashionActivity" />
         <activity
             android:name=".WomanFashionActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".FashionActivity" />
         <activity
             android:name=".ClothesActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".FashionActivity" />
         <activity
             android:name=".UnderWearActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".FashionActivity" />
         <activity
             android:name=".CarActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".ScienceActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".BookActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".CategoryActivity" />
         <activity
             android:name=".SportFashionActivity"
+            android:configChanges="screenLayout|orientation"
             android:parentActivityName=".FashionActivity" />
-        <activity android:name=".WebViewActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".WebViewActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"/>
+        <activity android:name=".MainActivity"
+            android:configChanges="screenLayout|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".NoConnectActivity"></activity>
+        <activity android:name=".NoConnectActivity"
+            android:configChanges="screenLayout|orientation"></activity>
     </application>
 
 </manifest>
