@@ -20,6 +20,11 @@ public class ItemModel {
 
     }
 
+    @Override
+    public String toString() {
+        return title;
+    }
+
     public String getTitle() {
         return title;
     }

@@ -6,22 +6,32 @@
     android:layout_height="match_parent"
     tools:context="com.gozdehanozturk.sitesite.NoConnectActivity">
 
+    <ImageView
+        android:id="@+id/connectImg"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:background="@drawable/wifi_off"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
+
     <TextView
-        android:id="@+id/connect_text"
+        android:id="@+id/connectText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/connectImg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:textSize="20sp"
-        android:layout_centerInParent="true"
-        android:layout_above="@id/connectBtn"
         android:text="@string/connect"/>
 
     <Button
         android:id="@+id/connectBtn"
         android:padding="10dp"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/connectText"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_background"
         android:textColor="@color/white"
         android:text="Tekrar Deneyin"/>

@@ -111,7 +111,7 @@
             android:configChanges="screenLayout|orientation"
             android:parentActivityName=".FashionActivity" />
         <activity android:name=".WebViewActivity"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"/>
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
         <activity android:name=".MainActivity"
             android:configChanges="screenLayout|orientation">
             <intent-filter>
