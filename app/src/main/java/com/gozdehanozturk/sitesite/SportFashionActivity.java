@@ -90,7 +90,7 @@ public class SportFashionActivity extends AppCompatActivity {
 
         mListView.setAdapter(ba);
 
-        dref = FirebaseDatabase.getInstance().getReference("sporgiyim");
+        dref = FirebaseDatabase.getInstance().getReference("kategori").child("sporgiyim");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

@@ -90,7 +90,7 @@ public class ShoesBagActivity extends AppCompatActivity {
 
         mListView.setAdapter(ba);
 
-        dref = FirebaseDatabase.getInstance().getReference("ayakkabicanta");
+        dref = FirebaseDatabase.getInstance().getReference("kategori").child("ayakkabicanta");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

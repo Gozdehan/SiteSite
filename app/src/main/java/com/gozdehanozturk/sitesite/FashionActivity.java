@@ -89,7 +89,7 @@ public class FashionActivity extends AppCompatActivity {
 
         mListView.setAdapter(ba);
 
-        dref = FirebaseDatabase.getInstance().getReference("moda");
+        dref = FirebaseDatabase.getInstance().getReference("kategori").child("moda");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -105,8 +105,6 @@ public class FashionActivity extends AppCompatActivity {
                 Log.d("LOGTEST",databaseError.getMessage());
             }
         });
-
-
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

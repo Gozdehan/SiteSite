@@ -102,7 +102,7 @@ public class CategoryActivity extends AppCompatActivity {
 
         avi.setVisibility(View.VISIBLE);
         avi.show();
-        dref = FirebaseDatabase.getInstance().getReference("kategori");
+        dref = FirebaseDatabase.getInstance().getReference("kategori").child("kategori");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -123,79 +123,61 @@ public class CategoryActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(CategoryActivity.this,MyActivity.class);
                 switch (i){
                     case 0:
-                        Intent intent = new Intent(CategoryActivity.this,CultureArtActivity.class);
-                        startActivity(intent);
+                        intent.putExtra("tür", "culture");
                         break;
                     case 1:
-                        Intent intent1 = new Intent(CategoryActivity.this,BookActivity.class);
-                        startActivity(intent1);
+                        intent.putExtra("tür","book");
                         break;
                     case 2:
-                        Intent intent2 = new Intent(CategoryActivity.this,NewsActivity.class);
-                        startActivity(intent2);
+                        intent.putExtra("tür","news");
                         break;
                     case 3:
-                        Intent intent3 = new Intent(CategoryActivity.this,TravelActivity.class);
-                        startActivity(intent3);
+                        intent.putExtra("tür","travel");
                         break;
                     case 4:
-                        Intent intent4 = new Intent(CategoryActivity.this,FashionActivity.class);
-                        startActivity(intent4);
+                        intent.putExtra("tür","fashion");
                         break;
-
                     case 5:
-                        Intent intent5 = new Intent(CategoryActivity.this,CosmeticActivity.class);
-                        startActivity(intent5);
+                        intent.putExtra("tür","cosmetic");
                         break;
                     case 6:
-                        Intent intent6 = new Intent(CategoryActivity.this,SportActivity.class);
-                        startActivity(intent6);
+                        intent.putExtra("tür","sport");
                         break;
                     case 7:
-                        Intent intent7 = new Intent(CategoryActivity.this,FoodActivity.class);
-                        startActivity(intent7);
+                        intent.putExtra("tür","food");
                         break;
                     case 8:
-                        Intent intent8 = new Intent(CategoryActivity.this,TechActivity.class);
-                        startActivity(intent8);
+                        intent.putExtra("tür","tech");
                         break;
                     case 9:
-                        Intent intent9 = new Intent(CategoryActivity.this,ScienceActivity.class);
-                        startActivity(intent9);
+                        intent.putExtra("tür","science");
                         break;
-
                     case 10:
-                        Intent intent10 = new Intent(CategoryActivity.this,MovieActivity.class);
-                        startActivity(intent10);
+                        intent.putExtra("tür","movie");
                         break;
                     case 11:
-                        Intent intent11 = new Intent(CategoryActivity.this,MusicActivity.class);
-                        startActivity(intent11);
+                        intent.putExtra("tür","music");
                         break;
                     case 12:
-                        Intent intent12 = new Intent(CategoryActivity.this,GiftActivity.class);
-                        startActivity(intent12);
+                        intent.putExtra("tür","gift");
                         break;
                     case 13:
-                        Intent intent13 = new Intent(CategoryActivity.this,ShopActivity.class);
-                        startActivity(intent13);
+                        intent.putExtra("tür","shop");
                         break;
                     case 14:
-                        Intent intent14 = new Intent(CategoryActivity.this,HealthActivity.class);
-                        startActivity(intent14);
+                        intent.putExtra("tür","health");
                         break;
                     case 15:
-                        Intent intent15 = new Intent(CategoryActivity.this,HomeStyleActivity.class);
-                        startActivity(intent15);
+                        intent.putExtra("tür","homestyle");
                         break;
                     case 16:
-                        Intent intent16 = new Intent(CategoryActivity.this,CarActivity.class);
-                        startActivity(intent16);
+                        intent.putExtra("tür","car");
                         break;
-
                 }
+                startActivity(intent);
             }
         });
 

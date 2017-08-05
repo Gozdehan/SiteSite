@@ -91,7 +91,7 @@ public class MAKActivity extends AppCompatActivity {
 
         mListView.setAdapter(ba);
 
-        dref = FirebaseDatabase.getInstance().getReference("saatmücevher");
+        dref = FirebaseDatabase.getInstance().getReference("kategori").child("saatmücevher");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

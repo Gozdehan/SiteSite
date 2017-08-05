@@ -89,7 +89,7 @@ public class UnderWearActivity extends AppCompatActivity {
 
         mListView.setAdapter(ba);
 
-        dref = FirebaseDatabase.getInstance().getReference("icgiyim");
+        dref = FirebaseDatabase.getInstance().getReference("kategori").child("icgiyim");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

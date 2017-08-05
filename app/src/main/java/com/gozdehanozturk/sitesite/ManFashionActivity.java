@@ -90,7 +90,7 @@ public class ManFashionActivity extends AppCompatActivity {
 
         mListView.setAdapter(ba);
 
-        dref = FirebaseDatabase.getInstance().getReference("erkekgiyim");
+        dref = FirebaseDatabase.getInstance().getReference("kategori").child("erkekgiyim");
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
