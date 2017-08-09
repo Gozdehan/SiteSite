@@ -51,7 +51,7 @@ public class CategoryActivity extends AppCompatActivity {
     List<ItemModel> itemList = new ArrayList<ItemModel>();
     List<ItemModel> foundList = new ArrayList<>();
 
-    String adr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=pretty";
+   // String adr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=pretty";
     String newAdr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=";
 
     private AVLoadingIndicatorView avi;
