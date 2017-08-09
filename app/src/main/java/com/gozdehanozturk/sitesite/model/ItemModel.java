@@ -20,6 +20,12 @@ public class ItemModel {
 
     }
 
+    public ItemModel(String title, String logo_url, String site_url) {
+        this.title=title;
+        this.logoUrl=logo_url;
+        this.siteUrl=site_url;
+    }
+
     @Override
     public String toString() {
         return title;

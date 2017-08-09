@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -34,6 +36,11 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.squareup.picasso.Picasso;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.jsoup.Jsoup;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +49,10 @@ public class CategoryActivity extends AppCompatActivity {
     DatabaseReference dref;
     ListView mListView;
     List<ItemModel> itemList = new ArrayList<ItemModel>();
+    List<ItemModel> foundList = new ArrayList<>();
+
+    String adr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=pretty";
+    String newAdr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=";
 
     private AVLoadingIndicatorView avi;
 
@@ -190,4 +201,66 @@ public class CategoryActivity extends AppCompatActivity {
         return true;
     }
 
+  @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.search:
+                SearchView searchView = (SearchView)item.getActionView();
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        System.out.println("çalıştım");
+                        newAdr = newAdr + newText;
+                        if (newText != null && !newText.isEmpty()) {
+                            new SearchTask().execute(newText);
+                        }
+                        return true;
+                    }
+                });
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+  private class SearchTask extends AsyncTask<String,String,ArrayList>{
+
+      @Override
+      protected ArrayList doInBackground(String... strings) {
+          try {
+              System.out.println("URL: " +newAdr);
+              String jsonStr = Jsoup.connect(newAdr).timeout(3000).userAgent("Mozilla").ignoreContentType(true).get().text().trim();
+              JSONObject jo = new JSONObject(jsonStr);
+              int size = jo.length();
+              System.out.println("SIZE: " +size);
+
+              for (int i = 0; i< size; i++)
+              {
+                  if (jo.has("bkey"+i))
+                  {
+                      JSONObject obj = jo.getJSONObject("bkey"+i);
+                      ItemModel item = new ItemModel(obj.getString("title"), obj.getString("logo_url"), obj.getString("site_url"));
+                      foundList.add(item);
+                  }
+              }
+
+          } catch (IOException e) {
+              e.printStackTrace();
+          } catch (JSONException e) {
+              e.printStackTrace();
+          }
+          return (ArrayList) foundList;
+      }
+
+      protected void onPostExecute(ArrayList<ItemModel> result){
+          for (ItemModel item : result) {
+              System.out.println("Sonuc : " + item.getTitle());
+          }
+
+      }
+  }
 }
+

@@ -128,9 +128,7 @@ public class UnderWearActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()){
-            case R.id.menuId:
-                Intent intent = new Intent(UnderWearActivity.this,CategoryActivity.class);
-                startActivity(intent);
+
 
             default:
                 return super.onOptionsItemSelected(item);
