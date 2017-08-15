@@ -29,11 +29,11 @@ public class MyActivity extends AppCompatActivity {
 
     DatabaseReference dref;
     ListView mListView;
+    public static String sonTur = "";
     List<ItemModel> itemList = new ArrayList<ItemModel>();
 
     BaseAdapter ba;
     LayoutInflater li;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +83,7 @@ public class MyActivity extends AppCompatActivity {
 
         mListView.setAdapter(ba);
 
-        String tur = getIntent().getExtras().getString("tür");
+        final String tur = getIntent().getExtras().getString("tür","");
 
         if(tur.equals("culture")){
             ab.setTitle("Kültür & Sanat");
@@ -105,17 +105,9 @@ public class MyActivity extends AppCompatActivity {
             dref = FirebaseDatabase.getInstance().getReference("kategori").child("seyahat");
         }
 
-        if(tur.equals("fashion")){
+         if(tur.equals("fashion")){
             ab.setTitle("Moda");
             dref = FirebaseDatabase.getInstance().getReference("kategori").child("moda");
-            Intent intent = new Intent(MyActivity.this,MySubActivity.class);
-         /*   intent.putExtra("tur1","ayakkabicanta");
-            intent.putExtra("tur2","giyim");
-            intent.putExtra("tur3","kadıngiyim");
-            intent.putExtra("tur4","erkekgiyim");
-            intent.putExtra("tur5","sporgiyim");
-            intent.putExtra("tur6","icgiyim");
-            intent.putExtra("tur7","saatmucevher");  */
         }
 
         if(tur.equals("cosmetic")){
@@ -197,12 +189,55 @@ public class MyActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MyActivity.this,WebViewActivity.class);
-                intent.putExtra("url",itemList.get(i).getSiteUrl());
-                intent.putExtra("title",itemList.get(i).getTitle());
-                startActivity(intent);
-                finish();
+
+
+                if(tur.equals("fashion")){
+                    switch (i){
+                        case 0:
+                            Intent intent0 = new Intent(MyActivity.this,ShoesBagActivity.class);
+                            startActivity(intent0);
+                            break;
+                        case 1:
+                            Intent intent1 = new Intent(MyActivity.this,ClothesActivity.class);
+                            startActivity(intent1);
+                            break;
+                        case 2:
+                            Intent intent2 = new Intent(MyActivity.this,WomanFashionActivity.class);
+                            startActivity(intent2);
+                            break;
+                        case 3:
+                            Intent intent3 = new Intent(MyActivity.this,ManFashionActivity.class);
+                            startActivity(intent3);
+                            break;
+                        case 4:
+                            Intent intent4 = new Intent(MyActivity.this,SportFashionActivity.class);
+                            startActivity(intent4);
+                            break;
+                        case 5:
+                            Intent intent5 = new Intent(MyActivity.this,UnderWearActivity.class);
+                            startActivity(intent5);
+                            break;
+                        case 6:
+                            Intent intent6 = new Intent(MyActivity.this,MAKActivity.class);
+                            startActivity(intent6);
+                            break;
+                    }
+                }
+                else
+                {
+                    Intent intent = new Intent(MyActivity.this,WebViewActivity.class);
+                    intent.putExtra("url",itemList.get(i).getSiteUrl());
+                    intent.putExtra("title",itemList.get(i).getTitle());
+                    startActivity(intent);
+                }
+                //finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();super.onBackPressed();
+        finish();
     }
 }

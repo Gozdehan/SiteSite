@@ -13,43 +13,39 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CategoryActivity" />
+        <activity android:name=".CategoryActivity"  android:theme="@style/noAnimTheme" />
         <activity
             android:name=".MAKActivity"
             android:configChanges="screenLayout|orientation"
-            android:parentActivityName=".CategoryActivity" />
-        <activity
-            android:name=".FashionActivity"
-            android:configChanges="screenLayout|orientation"
-            android:parentActivityName=".CategoryActivity" />
+            android:parentActivityName=".MyActivity" />
         <activity
             android:name=".ManFashionActivity"
             android:configChanges="screenLayout|orientation"
-            android:parentActivityName=".FashionActivity" />
+            android:parentActivityName=".MyActivity" />
         <activity
             android:name=".ShoesBagActivity"
             android:configChanges="screenLayout|orientation"
-            android:parentActivityName=".FashionActivity" />
+            android:parentActivityName=".MyActivity" />
         <activity
             android:name=".WomanFashionActivity"
             android:configChanges="screenLayout|orientation"
-            android:parentActivityName=".FashionActivity" />
+            android:parentActivityName=".MyActivity" />
         <activity
             android:name=".ClothesActivity"
             android:configChanges="screenLayout|orientation"
-            android:parentActivityName=".FashionActivity" />
+            android:parentActivityName=".MyActivity" />
         <activity
             android:name=".UnderWearActivity"
             android:configChanges="screenLayout|orientation"
-            android:parentActivityName=".FashionActivity" />
+            android:parentActivityName=".MyActivity" />
         <activity
             android:name=".SportFashionActivity"
             android:configChanges="screenLayout|orientation"
-            android:parentActivityName=".FashionActivity" />
+            android:parentActivityName=".MyActivity" />
         <activity
             android:name=".WebViewActivity"
-            android:parentActivityName=".MyActivity"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:parentActivityName=".MyActivity" />
         <activity
             android:name=".MainActivity"
             android:configChanges="screenLayout|orientation">
@@ -62,9 +58,12 @@
         <activity
             android:name=".NoConnectActivity"
             android:configChanges="screenLayout|orientation" />
-        <activity android:name=".MyActivity"
-            android:parentActivityName=".CategoryActivity"/>
-        <activity android:name=".MySubActivity"></activity>
+        <activity
+            android:name=".MyActivity"
+            android:parentActivityName=".CategoryActivity" />
+        <activity android:name=".SearchActivity" android:theme="@style/noAnimTheme">
+
+        </activity>
     </application>
 
 </manifest>

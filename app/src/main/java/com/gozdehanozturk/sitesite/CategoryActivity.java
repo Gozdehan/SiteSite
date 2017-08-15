@@ -50,9 +50,9 @@ public class CategoryActivity extends AppCompatActivity {
     ListView mListView;
     List<ItemModel> itemList = new ArrayList<ItemModel>();
     List<ItemModel> foundList = new ArrayList<>();
-
+    boolean isSearch = false;
    // String adr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=pretty";
-    String newAdr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=";
+      String newAdr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=";
 
     private AVLoadingIndicatorView avi;
 
@@ -76,6 +76,7 @@ public class CategoryActivity extends AppCompatActivity {
 
             @Override
             public int getCount() {
+
                 return itemList.size();
             }
 
@@ -204,7 +205,11 @@ public class CategoryActivity extends AppCompatActivity {
   @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+
             case R.id.search:
+                startActivity(new Intent(this, SearchActivity.class));
+                break;
+          /*  case R.id.search:
                 SearchView searchView = (SearchView)item.getActionView();
                 searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override
@@ -213,18 +218,20 @@ public class CategoryActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public boolean onQueryTextChange(String newText) {
+                    public boolean onQueryTextChange(final String newText) {
                         System.out.println("çalıştım");
                         newAdr = newAdr + newText;
                         if (newText != null && !newText.isEmpty()) {
-                            new SearchTask().execute(newText);
+
+                            Log.e("x","HAHAH");
                         }
                         return true;
                     }
-                });
+                });  */
         }
         return super.onOptionsItemSelected(item);
     }
+
 
   private class SearchTask extends AsyncTask<String,String,ArrayList>{
 
@@ -255,12 +262,12 @@ public class CategoryActivity extends AppCompatActivity {
           return (ArrayList) foundList;
       }
 
-      protected void onPostExecute(ArrayList<ItemModel> result){
-          for (ItemModel item : result) {
+      @Override
+      protected void onPostExecute(ArrayList arrayList) {
+          for (ItemModel item : foundList) {
               System.out.println("Sonuc : " + item.getTitle());
+              System.out.println("SİTE URL: " + item.getSiteUrl());
           }
-
       }
-  }
-}
+  }}
 
