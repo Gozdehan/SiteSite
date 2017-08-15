@@ -1,5 +1,6 @@
 package com.gozdehanozturk.sitesite;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -115,6 +117,16 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.d("LOGTEST",databaseError.getMessage());
+            }
+        });
+
+        searchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(SearchActivity.this,WebViewActivity.class);
+                intent.putExtra("url",foundList.get(i).getSiteUrl());
+                intent.putExtra("title",foundList.get(i).getTitle());
+                startActivity(intent);
             }
         });
 
