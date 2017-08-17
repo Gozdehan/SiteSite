@@ -13,7 +13,9 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CategoryActivity"  android:theme="@style/noAnimTheme" />
+        <activity
+            android:name=".CategoryActivity"
+            android:theme="@style/noAnimTheme" />
         <activity
             android:name=".MAKActivity"
             android:configChanges="screenLayout|orientation" />
@@ -50,11 +52,24 @@
         <activity
             android:name=".NoConnectActivity"
             android:configChanges="screenLayout|orientation" />
+        <activity android:name=".MyActivity" />
         <activity
-            android:name=".MyActivity" />
-        <activity android:name=".SearchActivity" android:theme="@style/noAnimTheme">
+            android:name=".SearchActivity"
+            android:theme="@style/noAnimTheme"></activity>
 
-        </activity>
+        <service android:name=".MessageService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/logo" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
     </application>
 
 </manifest>

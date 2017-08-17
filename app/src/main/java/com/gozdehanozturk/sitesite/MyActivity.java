@@ -29,7 +29,6 @@ public class MyActivity extends AppCompatActivity {
 
     DatabaseReference dref;
     ListView mListView;
-    public static String sonTur = "";
     List<ItemModel> itemList = new ArrayList<ItemModel>();
 
     BaseAdapter ba;
@@ -189,8 +188,6 @@ public class MyActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
                 if(tur.equals("fashion")){
                     switch (i){
                         case 0:

@@ -50,9 +50,9 @@ public class CategoryActivity extends AppCompatActivity {
     ListView mListView;
     List<ItemModel> itemList = new ArrayList<ItemModel>();
     List<ItemModel> foundList = new ArrayList<>();
-    boolean isSearch = false;
-   // String adr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=pretty";
-      String newAdr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=";
+   /* boolean isSearch = false;
+   String adr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=pretty";
+      String newAdr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=";*/
 
     private AVLoadingIndicatorView avi;
 
@@ -65,14 +65,14 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        avi= (AVLoadingIndicatorView) findViewById(R.id.avi);
+        avi = (AVLoadingIndicatorView) findViewById(R.id.avi);
         avi.setIndicator("");
 
         li = LayoutInflater.from(this);
 
-        mListView  = (ListView)findViewById(R.id.categoryListView);
+        mListView = (ListView) findViewById(R.id.categoryListView);
 
-            ba = new BaseAdapter() {
+        ba = new BaseAdapter() {
 
             @Override
             public int getCount() {
@@ -93,7 +93,7 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public View getView(int i, View view, ViewGroup viewGroup) {
 
-                if(view==null) {
+                if (view == null) {
                     view = li.inflate(R.layout.category_list_item, null);
                 }
 
@@ -119,7 +119,7 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 avi.hide();
-                for(DataSnapshot data:dataSnapshot.getChildren()){
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
                     ItemModel item = data.getValue(ItemModel.class);
                     itemList.add(item);
                     ba.notifyDataSetChanged();
@@ -128,65 +128,65 @@ public class CategoryActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("LOGTEST",databaseError.getMessage());
+                Log.d("LOGTEST", databaseError.getMessage());
             }
         });
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(CategoryActivity.this,MyActivity.class);
-                switch (i){
+                Intent intent = new Intent(CategoryActivity.this, MyActivity.class);
+                switch (i) {
                     case 0:
                         intent.putExtra("tür", "culture");
                         break;
                     case 1:
-                        intent.putExtra("tür","book");
+                        intent.putExtra("tür", "book");
                         break;
                     case 2:
-                        intent.putExtra("tür","news");
+                        intent.putExtra("tür", "news");
                         break;
                     case 3:
-                        intent.putExtra("tür","travel");
+                        intent.putExtra("tür", "travel");
                         break;
                     case 4:
-                        intent.putExtra("tür","fashion");
+                        intent.putExtra("tür", "fashion");
                         break;
                     case 5:
-                        intent.putExtra("tür","cosmetic");
+                        intent.putExtra("tür", "cosmetic");
                         break;
                     case 6:
-                        intent.putExtra("tür","sport");
+                        intent.putExtra("tür", "sport");
                         break;
                     case 7:
-                        intent.putExtra("tür","food");
+                        intent.putExtra("tür", "food");
                         break;
                     case 8:
-                        intent.putExtra("tür","tech");
+                        intent.putExtra("tür", "tech");
                         break;
                     case 9:
-                        intent.putExtra("tür","science");
+                        intent.putExtra("tür", "science");
                         break;
                     case 10:
-                        intent.putExtra("tür","movie");
+                        intent.putExtra("tür", "movie");
                         break;
                     case 11:
-                        intent.putExtra("tür","music");
+                        intent.putExtra("tür", "music");
                         break;
                     case 12:
-                        intent.putExtra("tür","gift");
+                        intent.putExtra("tür", "gift");
                         break;
                     case 13:
-                        intent.putExtra("tür","shop");
+                        intent.putExtra("tür", "shop");
                         break;
                     case 14:
-                        intent.putExtra("tür","health");
+                        intent.putExtra("tür", "health");
                         break;
                     case 15:
-                        intent.putExtra("tür","homestyle");
+                        intent.putExtra("tür", "homestyle");
                         break;
                     case 16:
-                        intent.putExtra("tür","car");
+                        intent.putExtra("tür", "car");
                         break;
                 }
                 startActivity(intent);
@@ -202,9 +202,9 @@ public class CategoryActivity extends AppCompatActivity {
         return true;
     }
 
-  @Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.search:
                 startActivity(new Intent(this, SearchActivity.class));
@@ -231,9 +231,9 @@ public class CategoryActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+}
 
-
-  private class SearchTask extends AsyncTask<String,String,ArrayList>{
+  /*private class SearchTask extends AsyncTask<String,String,ArrayList>{
 
       @Override
       protected ArrayList doInBackground(String... strings) {
@@ -269,5 +269,5 @@ public class CategoryActivity extends AppCompatActivity {
               System.out.println("SİTE URL: " + item.getSiteUrl());
           }
       }
-  }}
+  }}*/
 
