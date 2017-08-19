@@ -17,36 +17,15 @@
             android:name=".CategoryActivity"
             android:theme="@style/noAnimTheme" />
         <activity
-            android:name=".MAKActivity"
-            android:configChanges="screenLayout|orientation" />
-        <activity
-            android:name=".ManFashionActivity"
-            android:configChanges="screenLayout|orientation" />
-        <activity
-            android:name=".ShoesBagActivity"
-            android:configChanges="screenLayout|orientation" />
-        <activity
-            android:name=".WomanFashionActivity"
-            android:configChanges="screenLayout|orientation" />
-        <activity
-            android:name=".ClothesActivity"
-            android:configChanges="screenLayout|orientation" />
-        <activity
-            android:name=".UnderWearActivity"
-            android:configChanges="screenLayout|orientation" />
-        <activity
-            android:name=".SportFashionActivity"
-            android:configChanges="screenLayout|orientation" />
-        <activity
             android:name=".WebViewActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
         <activity
             android:name=".MainActivity"
             android:configChanges="screenLayout|orientation">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
@@ -55,7 +34,7 @@
         <activity android:name=".MyActivity" />
         <activity
             android:name=".SearchActivity"
-            android:theme="@style/noAnimTheme"></activity>
+            android:theme="@style/noAnimTheme" />
 
         <service android:name=".MessageService">
             <intent-filter>
@@ -70,6 +49,9 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
+        <activity android:name=".FavoriteActivity" />
+        <activity android:name=".SubActivity" />
+        <activity android:name=".OfferActivity"></activity>
     </application>
 
 </manifest>

@@ -189,36 +189,45 @@ public class MyActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(tur.equals("fashion")){
+                    Intent in = new Intent(MyActivity.this,SubActivity.class);
                     switch (i){
                         case 0:
-                            Intent intent0 = new Intent(MyActivity.this,ShoesBagActivity.class);
-                            startActivity(intent0);
+                            in.putExtra("tur", "ayakkabicanta");
+                          /*  Intent intent0 = new Intent(MyActivity.this,ShoesBagActivity.class);
+                            startActivity(intent0);*/
                             break;
                         case 1:
-                            Intent intent1 = new Intent(MyActivity.this,ClothesActivity.class);
-                            startActivity(intent1);
+                            in.putExtra("tur", "giyim");
+                           // Intent intent1 = new Intent(MyActivity.this,ClothesActivity.class);
+                            //startActivity(intent1);
                             break;
                         case 2:
-                            Intent intent2 = new Intent(MyActivity.this,WomanFashionActivity.class);
-                            startActivity(intent2);
+                            in.putExtra("tur", "kadingiyim");
+                           // Intent intent2 = new Intent(MyActivity.this,WomanFashionActivity.class);
+                           // startActivity(intent2);
                             break;
                         case 3:
-                            Intent intent3 = new Intent(MyActivity.this,ManFashionActivity.class);
-                            startActivity(intent3);
+                            in.putExtra("tur", "erkekgiyim");
+                            //Intent intent3 = new Intent(MyActivity.this,ManFashionActivity.class);
+                            //startActivity(intent3);
                             break;
                         case 4:
-                            Intent intent4 = new Intent(MyActivity.this,SportFashionActivity.class);
-                            startActivity(intent4);
+                            in.putExtra("tur", "sporgiyim");
+                           // Intent intent4 = new Intent(MyActivity.this,SportFashionActivity.class);
+                            //startActivity(intent4);
                             break;
                         case 5:
-                            Intent intent5 = new Intent(MyActivity.this,UnderWearActivity.class);
-                            startActivity(intent5);
+                            in.putExtra("tur", "icgiyim");
+                            //Intent intent5 = new Intent(MyActivity.this,UnderWearActivity.class);
+                           // startActivity(intent5);
                             break;
                         case 6:
-                            Intent intent6 = new Intent(MyActivity.this,MAKActivity.class);
-                            startActivity(intent6);
+                            in.putExtra("tur", "kozmetik");
+                           // Intent intent6 = new Intent(MyActivity.this,MAKActivity.class);
+                           // startActivity(intent6);
                             break;
                     }
+                    startActivity(in);
                 }
                 else
                 {

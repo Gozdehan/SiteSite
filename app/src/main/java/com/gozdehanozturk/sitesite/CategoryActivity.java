@@ -49,10 +49,6 @@ public class CategoryActivity extends AppCompatActivity {
     DatabaseReference dref;
     ListView mListView;
     List<ItemModel> itemList = new ArrayList<ItemModel>();
-    List<ItemModel> foundList = new ArrayList<>();
-   /* boolean isSearch = false;
-   String adr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=pretty";
-      String newAdr = "https://sitesite-1b4fa.firebaseio.com/arama.json?print=";*/
 
     private AVLoadingIndicatorView avi;
 
@@ -209,65 +205,12 @@ public class CategoryActivity extends AppCompatActivity {
             case R.id.search:
                 startActivity(new Intent(this, SearchActivity.class));
                 break;
-          /*  case R.id.search:
-                SearchView searchView = (SearchView)item.getActionView();
-                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                    @Override
-                    public boolean onQueryTextSubmit(String query) {
-                        return false;
-                    }
 
-                    @Override
-                    public boolean onQueryTextChange(final String newText) {
-                        System.out.println("çalıştım");
-                        newAdr = newAdr + newText;
-                        if (newText != null && !newText.isEmpty()) {
-
-                            Log.e("x","HAHAH");
-                        }
-                        return true;
-                    }
-                });  */
+            case R.id.offer:
+                startActivity(new Intent(this,OfferActivity.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 }
-
-  /*private class SearchTask extends AsyncTask<String,String,ArrayList>{
-
-      @Override
-      protected ArrayList doInBackground(String... strings) {
-          try {
-              System.out.println("URL: " +newAdr);
-              String jsonStr = Jsoup.connect(newAdr).timeout(3000).userAgent("Mozilla").ignoreContentType(true).get().text().trim();
-              JSONObject jo = new JSONObject(jsonStr);
-              int size = jo.length();
-              System.out.println("SIZE: " +size);
-
-              for (int i = 0; i< size; i++)
-              {
-                  if (jo.has("bkey"+i))
-                  {
-                      JSONObject obj = jo.getJSONObject("bkey"+i);
-                      ItemModel item = new ItemModel(obj.getString("title"), obj.getString("logo_url"), obj.getString("site_url"));
-                      foundList.add(item);
-                  }
-              }
-
-          } catch (IOException e) {
-              e.printStackTrace();
-          } catch (JSONException e) {
-              e.printStackTrace();
-          }
-          return (ArrayList) foundList;
-      }
-
-      @Override
-      protected void onPostExecute(ArrayList arrayList) {
-          for (ItemModel item : foundList) {
-              System.out.println("Sonuc : " + item.getTitle());
-              System.out.println("SİTE URL: " + item.getSiteUrl());
-          }
-      }
-  }}*/
 
