@@ -8,9 +8,13 @@
           app:showAsAction="always|collapseActionView" />
 
     <item android:id="@+id/offer"
-        android:title="@string/offer"
-        android:icon="@drawable/ic_message"
-        app:showAsAction="always|collapseActionView"/>
+    android:title="@string/offer"
+    android:icon="@drawable/ic_message"
+    app:showAsAction="always|collapseActionView"/>
 
+  <!--  <item android:id="@+id/fav"
+        android:title="@string/offer"
+        android:icon="@drawable/ic_stat_ac_unit"
+        app:showAsAction="always|collapseActionView"/>  -->
 
 </menu>

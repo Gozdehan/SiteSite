@@ -1,13 +1,29 @@
 <resources>
-    <string name="app_name">SiteFlow</string>
+    <string name="app_name">SiteGez</string>
     <string name="search_title">Ara</string>
     <string name="search_hint">search</string>
     <string name="connect">İnternete Bağlı Değilsiniz! Bağlantınızı Kontrol Edin!</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activity_home_ativity">HomeAtivity</string>
-    <string name="tab1">tab1</string>
-    <string name="tab2">tab2</string>
     <string name="offer">Öneri</string>
+    <string name="spinner_hint">Kategori seçiniz</string>
+
+    <string-array name="category_array">
+        <item>Kültür &amp; Sanat</item>
+        <item>Kitap &amp; Dergi</item>
+        <item>Haberler</item>
+        <item>Seyahat &amp; Tatil</item>
+        <item>Moda</item>
+        <item>Kozmetik</item>
+        <item>Spor</item>
+        <item>Yemek</item>
+        <item>Teknoloji</item>
+        <item>Bilim</item>
+        <item>Film &amp; Dizi</item>
+        <item>Müzik</item>
+        <item>Hediye</item>
+        <item>E-Alışveriş</item>
+        <item>Sağlık</item>
+        <item>Ev Tekstili</item>
+        <item>Otomobil</item>
+    </string-array>
+
 </resources>

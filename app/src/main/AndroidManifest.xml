@@ -8,9 +8,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/sg"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo"
+        android:roundIcon="@drawable/sg"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -44,14 +44,14 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/logo" />
+            android:resource="@drawable/notification" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
         <activity android:name=".FavoriteActivity" />
         <activity android:name=".SubActivity" />
-        <activity android:name=".OfferActivity"></activity>
+        <activity android:name=".OfferActivity"/>
     </application>
 
 </manifest>

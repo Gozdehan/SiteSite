@@ -43,12 +43,15 @@ public class SearchActivity extends AppCompatActivity {
     LayoutInflater li;
 
 
+   // SP sp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+      //  sp = new SP(this);
         li = LayoutInflater.from(this);
         searchListView = (ListView)findViewById(R.id.listSearch);
 
@@ -89,12 +92,10 @@ public class SearchActivity extends AppCompatActivity {
                         text.setText(itemList.get(i).getTitle());
                         Picasso.with(SearchActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
                     }
-                    else
-                        {
-                            text.setText(foundList.get(i).getTitle());
-                            Picasso.with(SearchActivity.this).load(foundList.get(i).getLogoUrl()).into(image);
+                    else {
+                        text.setText(foundList.get(i).getTitle());
+                        Picasso.with(SearchActivity.this).load(foundList.get(i).getLogoUrl()).into(image);
                     }
-                    //return view;
 
                 return view;
             }
@@ -110,8 +111,16 @@ public class SearchActivity extends AppCompatActivity {
                 for(DataSnapshot data:dataSnapshot.getChildren()){
                     ItemModel item = data.getValue(ItemModel.class);
                     itemList.add(item);
+
+                  /*  if (!sp.isIndexCreated())
+                    {
+                        sp.setFavValues(item.getTitle());
+                    }*/
+
                     ba.notifyDataSetChanged();
                 }
+
+               // sp.setIndexCreated();
             }
 
             @Override

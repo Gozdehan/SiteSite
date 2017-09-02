@@ -15,14 +15,26 @@
         android:layout_height="54dp"/>
 
     <TextView
+        android:layout_weight="2"
         android:id="@+id/item_name"
         android:textSize="18sp"
         android:paddingLeft="30dp"
         android:text="DENEME"
         android:gravity="center_vertical"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="54dp"/>
-</LinearLayout>
 
+    <ToggleButton
+
+        android:id="@+id/tb"
+        android:focusable="false"
+        android:textOff=""
+        android:text=""
+        android:textOn=""
+        android:background="@drawable/favorite_selector"
+        android:layout_width="30dp"
+        android:layout_height="35dp" />
+
+</LinearLayout>
 
 </LinearLayout>

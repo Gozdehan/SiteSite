@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
     tools:context="com.gozdehanozturk.sitesite.OfferActivity">
 
     <LinearLayout
@@ -12,12 +11,13 @@
         android:id="@+id/bildiri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:weightSum="1"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="58dp"
-            android:layout_height="77dp"
+            android:layout_width="30dp"
+            android:layout_height="55dp"
             android:background="@drawable/info8"/>
 
         <TextView
@@ -29,25 +29,14 @@
             android:textAlignment="center"
             android:padding="10dp"/>
     </LinearLayout>
-
-
     <LinearLayout
         android:id="@+id/linearSite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/bildiri"
-        android:layout_marginTop="50dp"
-        android:padding="2dp"
-        android:weightSum="2">
-       <!-- <TextView
-            android:id="@+id/siteAdi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Site Adı: "
-            android:padding="10dp"/>  -->
-
+        android:layout_marginTop="15dp"
+        android:padding="2dp">
         <EditText
             android:id="@+id/edtOneri"
             android:layout_width="match_parent"
@@ -63,22 +52,21 @@
             android:id="@+id/spKategori"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="2dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true" />
     </LinearLayout>
 
-
     <Button
         android:id="@+id/btnGonder"
-        android:layout_width="300dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearSite"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="10dp"
         android:layout_centerInParent="true"
         android:textColor="@color/white"
         android:background="@drawable/button_background"
-        android:text="GÖNDER" />
+        android:text="GÖNDER"/>
 
 </RelativeLayout>

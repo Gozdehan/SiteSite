@@ -1,38 +1,59 @@
 package com.gozdehanozturk.sitesite;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.StateListDrawable;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.gozdehanozturk.sitesite.model.FavoriteModel;
 import com.gozdehanozturk.sitesite.model.ItemModel;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyActivity extends AppCompatActivity {
+public class MyActivity extends AppCompatActivity
+{
 
     DatabaseReference dref;
     ListView mListView;
     List<ItemModel> itemList = new ArrayList<ItemModel>();
+    ToggleButton tb;
+
 
     BaseAdapter ba;
     LayoutInflater li;
+
+
+   // SP sp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +61,7 @@ public class MyActivity extends AppCompatActivity {
 
         ActionBar ab = getSupportActionBar();
 
+        //sp =new SP(this);
         li = LayoutInflater.from(this);
 
         mListView  = (ListView)findViewById(R.id.applistview);
@@ -56,27 +78,75 @@ public class MyActivity extends AppCompatActivity {
             }
 
             @Override
-            public long getItemId(int i) {
+            public long getItemId(int position) {
                 return 0;
             }
 
             @Override
-            public View getView(int i, View view, ViewGroup viewGroup) {
-
-                if(view==null) {
-                    view = li.inflate(R.layout.list_item, null);
+            public View getView(final int position, View convertView, ViewGroup parent) {
+                if (convertView == null) {
+                    convertView = li.inflate(R.layout.list_item, parent, false);
                 }
 
-                ImageView image = view.findViewById(R.id.item_logo);
+                tb = (ToggleButton)convertView.findViewById(R.id.tb);
+                final View finalConvertView = convertView;
+
+              /*  boolean isSelected = sp.isFavSelected(itemList.get(position).getTitle());
+                Log.e("x","CURR : "+itemList.get(position).getTitle()+" --> "+isSelected);
+                tb.setChecked(isSelected);
 
 
-                TextView text = view.findViewById(R.id.item_name);
-                text.setText(itemList.get(i).getTitle());
+                tb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        String baslik= itemList.get(position).getTitle();
+                        sp.setFavValueOfSite(baslik, true);
 
+                        Log.e("x",baslik+" --> "+b);
+                    }
+                });
+/*
 
-                Picasso.with(MyActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
+                tb.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SharedPreferences sharedPreferences = getSharedPreferences("favorites", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        TextView text = finalConvertView.findViewById(R.id.item_name);
+                        Log.d("LOGTEST",itemList.get(position).getSiteUrl());
+                        String currentFavItems = sharedPreferences.getString("favitems", "");
 
-                return view;
+                        String newFavItems = "";
+                        if(currentFavItems.equals("")){
+                            newFavItems = itemList.get(position).getSharedKey();
+                        }else{
+                            if(currentFavItems.contains(",")){
+                                String items[] = currentFavItems.split(",");
+
+                                for(String item:items){
+                                    if(item.equals(itemList.get(position).getSharedKey())){
+                                        newFavItems = currentFavItems;
+                                    }else{
+                                        newFavItems = currentFavItems + "," + itemList.get(position).getSharedKey();
+                                    }
+                                }
+                            }else{
+
+                                newFavItems = currentFavItems + "," + itemList.get(position).getSharedKey();
+                            }
+                        }
+                        editor.putString("favitems", newFavItems);
+                        editor.commit();
+                        Log.i("FAVORITEST",editor.toString());
+                    }
+                });
+*/
+                ImageView image = convertView.findViewById(R.id.item_logo);
+                TextView text = finalConvertView.findViewById(R.id.item_name);
+                text.setText(itemList.get(position).getTitle());
+
+                Picasso.with(MyActivity.this).load(itemList.get(position).getLogoUrl()).into(image);
+                return convertView;
             }
         };
 
@@ -174,6 +244,7 @@ public class MyActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot data:dataSnapshot.getChildren()){
                     ItemModel item = data.getValue(ItemModel.class);
+                    item.setKeys(dataSnapshot.getKey(), data.getKey());
                     itemList.add(item);
                     ba.notifyDataSetChanged();
                 }
@@ -193,38 +264,24 @@ public class MyActivity extends AppCompatActivity {
                     switch (i){
                         case 0:
                             in.putExtra("tur", "ayakkabicanta");
-                          /*  Intent intent0 = new Intent(MyActivity.this,ShoesBagActivity.class);
-                            startActivity(intent0);*/
                             break;
                         case 1:
                             in.putExtra("tur", "giyim");
-                           // Intent intent1 = new Intent(MyActivity.this,ClothesActivity.class);
-                            //startActivity(intent1);
                             break;
                         case 2:
                             in.putExtra("tur", "kadingiyim");
-                           // Intent intent2 = new Intent(MyActivity.this,WomanFashionActivity.class);
-                           // startActivity(intent2);
                             break;
                         case 3:
                             in.putExtra("tur", "erkekgiyim");
-                            //Intent intent3 = new Intent(MyActivity.this,ManFashionActivity.class);
-                            //startActivity(intent3);
                             break;
                         case 4:
                             in.putExtra("tur", "sporgiyim");
-                           // Intent intent4 = new Intent(MyActivity.this,SportFashionActivity.class);
-                            //startActivity(intent4);
                             break;
                         case 5:
                             in.putExtra("tur", "icgiyim");
-                            //Intent intent5 = new Intent(MyActivity.this,UnderWearActivity.class);
-                           // startActivity(intent5);
                             break;
                         case 6:
                             in.putExtra("tur", "kozmetik");
-                           // Intent intent6 = new Intent(MyActivity.this,MAKActivity.class);
-                           // startActivity(intent6);
                             break;
                     }
                     startActivity(in);
@@ -236,14 +293,41 @@ public class MyActivity extends AppCompatActivity {
                     intent.putExtra("title",itemList.get(i).getTitle());
                     startActivity(intent);
                 }
-                //finish();
             }
         });
     }
+
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();super.onBackPressed();
         finish();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.search:
+                startActivity(new Intent(this, SearchActivity.class));
+                break;
+
+            case R.id.offer:
+                startActivity(new Intent(this,OfferActivity.class));
+                break;
+
+        /*    case R.id.fav:
+                startActivity(new Intent(this,FavoriteActivity.class));
+                break;*/
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

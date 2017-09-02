@@ -16,14 +16,20 @@ public class ItemModel {
     @PropertyName("logo_url")
     public String logoUrl;
 
+    private String sharedKey;
+    private String itemKey;
+
+
+    public boolean isFav;
     public ItemModel() {
 
     }
 
-    public ItemModel(String title, String logo_url, String site_url) {
+    public ItemModel(String title, String logo_url, String site_url, String sharedKey) {
         this.title=title;
         this.logoUrl=logo_url;
         this.siteUrl=site_url;
+        this.sharedKey = sharedKey;
     }
 
     @Override
@@ -53,5 +59,18 @@ public class ItemModel {
 
     public void setLogoUrl(String logoUrl) {
         this.logoUrl = logoUrl;
+    }
+
+    public void setKeys(String category, String itemKey) {
+        this.sharedKey = category + "-" + itemKey;
+        this.itemKey = itemKey;
+    }
+
+    public String getSharedKey() {
+        return sharedKey;
+    }
+
+    public String getItemKey(){
+        return itemKey;
     }
 }
