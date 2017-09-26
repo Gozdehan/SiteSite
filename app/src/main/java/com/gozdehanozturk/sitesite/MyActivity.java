@@ -295,6 +295,18 @@ public class MyActivity extends AppCompatActivity
                 }
             }
         });
+
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, itemList.get(i).getTitle());
+                shareIntent.putExtra(Intent.EXTRA_TEXT, itemList.get(i).getSiteUrl());
+                startActivity(Intent.createChooser(shareIntent, "Share Via.."));
+                return true;
+            }
+        });
     }
 
 

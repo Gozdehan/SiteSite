@@ -44,6 +44,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
+
 public class CategoryActivity extends AppCompatActivity {
 
     DatabaseReference dref;
@@ -51,6 +54,7 @@ public class CategoryActivity extends AppCompatActivity {
     List<ItemModel> itemList = new ArrayList<ItemModel>();
 
     private AVLoadingIndicatorView avi;
+
 
     BaseAdapter ba;
     LayoutInflater li;
@@ -60,6 +64,7 @@ public class CategoryActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+
 
         avi = (AVLoadingIndicatorView) findViewById(R.id.avi);
         avi.setIndicator("");
@@ -188,6 +193,7 @@ public class CategoryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 
