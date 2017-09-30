@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.gozdehanozturk.sitesite.model.ItemModel;
+import com.gozdehanozturk.sitesite.model.Site;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -32,124 +33,34 @@ import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
 
-    DatabaseReference dr;
-    ListView searchListView;
-    List<ItemModel> itemList = new ArrayList<ItemModel>();
-    List<ItemModel> foundList = new ArrayList<>();
-
-    boolean isSearch = false;
-
-    BaseAdapter ba;
-    LayoutInflater li;
-
-
-   // SP sp;
-
+    private SiteListAdapter adapter;
+    private List<Site> sites = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-      //  sp = new SP(this);
-        li = LayoutInflater.from(this);
-        searchListView = (ListView)findViewById(R.id.listSearch);
-
-        ba = new BaseAdapter() {
-            @Override
-            public int getCount() {
-
-
-                if (!isSearch)  return itemList.size();
-                else return foundList.size();
-
-            }
-
-            @Override
-            public Object getItem(int i) {
-                return null;
-            }
-
-            @Override
-            public long getItemId(int i) {
-                return 0;
-            }
-
-            @Override
-            public View getView(int i, View view, ViewGroup viewGroup) {
-
-                    if(view==null)
-                    {
-                        view = li.inflate(R.layout.list_item,null);
-                    }
-
-                    ImageView image = view.findViewById(R.id.item_logo);
-
-
-                    TextView text = view.findViewById(R.id.item_name);
-
-                    if (!isSearch) {
-                        text.setText(itemList.get(i).getTitle());
-                        Picasso.with(SearchActivity.this).load(itemList.get(i).getLogoUrl()).into(image);
-                    }
-                    else {
-                        text.setText(foundList.get(i).getTitle());
-                        Picasso.with(SearchActivity.this).load(foundList.get(i).getLogoUrl()).into(image);
-                    }
-
-                return view;
-            }
-        };
-
-        searchListView.setAdapter(ba);
-
-        dr = FirebaseDatabase.getInstance().getReference("arama");
-
-        dr.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot data:dataSnapshot.getChildren()){
-                    ItemModel item = data.getValue(ItemModel.class);
-                    itemList.add(item);
-
-                  /*  if (!sp.isIndexCreated())
-                    {
-                        sp.setFavValues(item.getTitle());
-                    }*/
-
-                    ba.notifyDataSetChanged();
-                }
-
-               // sp.setIndexCreated();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("LOGTEST",databaseError.getMessage());
-            }
-        });
-
-        searchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(SearchActivity.this,WebViewActivity.class);
-                intent.putExtra("url",foundList.get(i).getSiteUrl());
-                intent.putExtra("title",foundList.get(i).getTitle());
-                startActivity(intent);
-            }
-        });
-
+        MyApplication application = ((MyApplication) getApplication());
+        sites = application.getCategoryManager().getFlatSiteList();
+        adapter = new SiteListAdapter(sites, application.getFavoriteManager());
+        ((ListView) findViewById(R.id.search_list_view)).setAdapter(adapter);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_menu, menu);
+
+        /*MenuItem searchMenuItem = menu.findItem(R.id.searchmenu);
+        searchMenuItem.expandActionView();*/
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()){
             case R.id.searchmenu:
                 SearchView searchView = (SearchView)item.getActionView();
@@ -160,26 +71,20 @@ public class SearchActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public boolean onQueryTextChange(String newText)
-                    {
+                    public boolean onQueryTextChange(String newText) {
+                        List<Site> foundList = new ArrayList<>(sites);
 
                         if (newText != null && !newText.isEmpty()) {
-                            isSearch  = true;
-                            foundList.clear();
-                            for(ItemModel item : itemList){
-                               if(item.getTitle().toLowerCase().contains(newText.toLowerCase())){
-                                   foundList.add(item);
+                            for(Site site : sites){
+                               if(false == site.getName().toLowerCase().contains(newText.toLowerCase())){
+                                   foundList.remove(site);
                                }
                             }
+                        }
 
-                            ba.notifyDataSetChanged();
-                        }
-                        else
-                        {
-                            isSearch = false;
-                            foundList.clear();
-                            ba.notifyDataSetChanged();
-                        }
+                        adapter.setSites(foundList);
+                        adapter.notifyDataSetChanged();
+
                         return true;
                     }
                 });

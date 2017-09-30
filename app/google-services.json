@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "227402784450",
+    "firebase_url": "https://sitesite-1b4fa.firebaseio.com",
+    "project_id": "sitesite-1b4fa",
+    "storage_bucket": "sitesite-1b4fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227402784450:android:528f4ec4a7ca128b",
+        "android_client_info": {
+          "package_name": "com.gozdehanozturk.sitesite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227402784450-1k05u47pjb8ur0p03qqoktfvb12live5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gozdehanozturk.sitesite",
+            "certificate_hash": "5fb39bcb8cd043f1c83ab43632f05809fde8baad"
+          }
+        },
+        {
+          "client_id": "227402784450-ql8n7ajm99eskiqv68opj7falv56belb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gozdehanozturk.sitesite",
+            "certificate_hash": "84dae3907062f66897d83ccac5d9c121d4600650"
+          }
+        },
+        {
+          "client_id": "227402784450-5i6np4ltoal606f161kr2repd2kf367n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAitBwPiaMTkZcKfFX33Szvo3cQHzGUkeg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "227402784450-5i6np4ltoal606f161kr2repd2kf367n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

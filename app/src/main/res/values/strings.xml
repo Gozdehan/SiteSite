@@ -5,6 +5,7 @@
     <string name="connect">İnternete Bağlı Değilsiniz! Bağlantınızı Kontrol Edin!</string>
     <string name="offer">Öneri</string>
     <string name="spinner_hint">Kategori seçiniz</string>
+    <string name="favorite">Favoriler</string>
 
     <string-array name="category_array">
         <item>Kültür &amp; Sanat</item>

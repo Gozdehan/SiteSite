@@ -20,11 +20,6 @@ public class ItemModel {
     private String itemKey;
 
 
-    public boolean isFav;
-    public ItemModel() {
-
-    }
-
     public ItemModel(String title, String logo_url, String site_url, String sharedKey) {
         this.title=title;
         this.logoUrl=logo_url;

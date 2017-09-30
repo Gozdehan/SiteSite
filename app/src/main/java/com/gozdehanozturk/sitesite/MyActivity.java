@@ -1,10 +1,6 @@
 package com.gozdehanozturk.sitesite;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.drawable.StateListDrawable;
-import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,11 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.google.firebase.database.DataSnapshot;
@@ -29,12 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.gozdehanozturk.sitesite.model.FavoriteModel;
+import com.gozdehanozturk.sitesite.manager.FavoriteManager;
 import com.gozdehanozturk.sitesite.model.ItemModel;
 import com.squareup.picasso.Picasso;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +37,7 @@ public class MyActivity extends AppCompatActivity
     ListView mListView;
     List<ItemModel> itemList = new ArrayList<ItemModel>();
     ToggleButton tb;
-
+    private FavoriteManager favoriteManager;
 
     BaseAdapter ba;
     LayoutInflater li;
@@ -58,6 +49,7 @@ public class MyActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+        favoriteManager = ((MyApplication) getApplication()).getFavoriteManager();
 
         ActionBar ab = getSupportActionBar();
 
@@ -89,58 +81,20 @@ public class MyActivity extends AppCompatActivity
                 }
 
                 tb = (ToggleButton)convertView.findViewById(R.id.tb);
-                final View finalConvertView = convertView;
-
-              /*  boolean isSelected = sp.isFavSelected(itemList.get(position).getTitle());
-                Log.e("x","CURR : "+itemList.get(position).getTitle()+" --> "+isSelected);
-                tb.setChecked(isSelected);
-
-
-                tb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        String baslik= itemList.get(position).getTitle();
-                        sp.setFavValueOfSite(baslik, true);
-
-                        Log.e("x",baslik+" --> "+b);
-                    }
-                });
-/*
-
+                tb.setChecked(favoriteManager.isFavorite(itemList.get(position).getSiteUrl()));
                 tb.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        SharedPreferences sharedPreferences = getSharedPreferences("favorites", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        TextView text = finalConvertView.findViewById(R.id.item_name);
-                        Log.d("LOGTEST",itemList.get(position).getSiteUrl());
-                        String currentFavItems = sharedPreferences.getString("favitems", "");
-
-                        String newFavItems = "";
-                        if(currentFavItems.equals("")){
-                            newFavItems = itemList.get(position).getSharedKey();
-                        }else{
-                            if(currentFavItems.contains(",")){
-                                String items[] = currentFavItems.split(",");
-
-                                for(String item:items){
-                                    if(item.equals(itemList.get(position).getSharedKey())){
-                                        newFavItems = currentFavItems;
-                                    }else{
-                                        newFavItems = currentFavItems + "," + itemList.get(position).getSharedKey();
-                                    }
-                                }
-                            }else{
-
-                                newFavItems = currentFavItems + "," + itemList.get(position).getSharedKey();
-                            }
+                        if (((ToggleButton) view).isChecked()) {
+                            favoriteManager.add(itemList.get(position).getSiteUrl());
+                        } else {
+                            favoriteManager.remove(itemList.get(position).getSiteUrl());
                         }
-                        editor.putString("favitems", newFavItems);
-                        editor.commit();
-                        Log.i("FAVORITEST",editor.toString());
                     }
                 });
-*/
+
+                final View finalConvertView = convertView;
+
                 ImageView image = convertView.findViewById(R.id.item_logo);
                 TextView text = finalConvertView.findViewById(R.id.item_name);
                 text.setText(itemList.get(position).getTitle());
@@ -172,15 +126,15 @@ public class MyActivity extends AppCompatActivity
         if(tur.equals("travel")){
             ab.setTitle("Seyahat & Tatil");
             dref = FirebaseDatabase.getInstance().getReference("kategori").child("seyahat");
-        }
+            }
 
-         if(tur.equals("fashion")){
-            ab.setTitle("Moda");
-            dref = FirebaseDatabase.getInstance().getReference("kategori").child("moda");
-        }
+             if(tur.equals("fashion")){
+                ab.setTitle("Moda");
+                dref = FirebaseDatabase.getInstance().getReference("kategori").child("moda");
+            }
 
-        if(tur.equals("cosmetic")){
-            ab.setTitle("Kozmetik");
+            if(tur.equals("cosmetic")){
+                ab.setTitle("Kozmetik");
             dref = FirebaseDatabase.getInstance().getReference("kategori").child("kozmetik");
         }
 
@@ -303,7 +257,7 @@ public class MyActivity extends AppCompatActivity
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, itemList.get(i).getTitle());
                 shareIntent.putExtra(Intent.EXTRA_TEXT, itemList.get(i).getSiteUrl());
-                startActivity(Intent.createChooser(shareIntent, "Share Via.."));
+                startActivity(Intent.createChooser(shareIntent, "PAYLAŞ"));
                 return true;
             }
         });

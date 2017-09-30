@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/sg"
         android:label="@string/app_name"
@@ -20,7 +21,7 @@
             android:name=".WebViewActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
         <activity
-            android:name=".MainActivity"
+            android:name=".CategoriesActivity"
             android:configChanges="screenLayout|orientation">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -51,7 +52,9 @@
 
         <activity android:name=".FavoriteActivity" />
         <activity android:name=".SubActivity" />
-        <activity android:name=".OfferActivity"/>
+        <activity android:name=".OfferActivity" />
+        <activity android:name=".SitesActivity" />
+        <activity android:name=".FavoriteSitesActivity"></activity>
     </application>
 
 </manifest>
