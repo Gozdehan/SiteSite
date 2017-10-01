@@ -1,9 +1,11 @@
-package com.gozdehanozturk.sitesite;
+package com.gozdehanozturk.sitesite.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.gozdehanozturk.sitesite.R;
+import com.gozdehanozturk.sitesite.adapter.SiteListAdapter;
 import com.gozdehanozturk.sitesite.manager.FavoriteManager;
 import com.gozdehanozturk.sitesite.model.Site;
 

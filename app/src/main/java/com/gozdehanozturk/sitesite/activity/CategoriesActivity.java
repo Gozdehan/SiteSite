@@ -1,4 +1,4 @@
-package com.gozdehanozturk.sitesite;
+package com.gozdehanozturk.sitesite.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +10,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.gozdehanozturk.sitesite.R;
+import com.gozdehanozturk.sitesite.adapter.CategoryListAdapter;
 import com.gozdehanozturk.sitesite.manager.CategoryManager;
 import com.gozdehanozturk.sitesite.manager.LoadListener;
 import com.gozdehanozturk.sitesite.model.Category;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +35,6 @@ public class CategoriesActivity extends AppCompatActivity implements LoadListene
         ListView listView = (ListView) findViewById(R.id.categories);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-
         categoryManager = ((MyApplication) getApplication()).getCategoryManager();
         categoryManager.load(this);
     }

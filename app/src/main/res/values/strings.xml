@@ -8,6 +8,7 @@
     <string name="favorite">Favoriler</string>
 
     <string-array name="category_array">
+        <item>KATEGORİ SEÇİNİZ</item>
         <item>Kültür &amp; Sanat</item>
         <item>Kitap &amp; Dergi</item>
         <item>Haberler</item>

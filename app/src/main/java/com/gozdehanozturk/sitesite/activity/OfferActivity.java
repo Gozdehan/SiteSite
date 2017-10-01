@@ -1,13 +1,8 @@
-package com.gozdehanozturk.sitesite;
+package com.gozdehanozturk.sitesite.activity;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +12,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.gozdehanozturk.sitesite.R;
 
 public class OfferActivity extends AppCompatActivity {
 
@@ -32,11 +28,9 @@ public class OfferActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setTitle("Önerileriniz?");
 
-
         editOneri = (EditText) findViewById(R.id.edtOneri);
 
-
-       spinner = (Spinner)findViewById(R.id.spKategori);
+        spinner = (Spinner)findViewById(R.id.spKategori);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.category_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -48,20 +42,24 @@ public class OfferActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("oneriler");
+                if(editOneri.getText().toString().equals("")){
+                    Toast.makeText(OfferActivity.this,"LÜTFEN SİTE ADRESİNİ GİRİNİZ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else{
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("oneriler");
 
+                    String item = spinner.getSelectedItem().toString();
 
-                String item = spinner.getSelectedItem().toString();
+                    String key = myRef.push().getKey();
+                    myRef.child(key).setValue(editOneri.getText().toString()+"/"+item);
 
-                String key = myRef.push().getKey();
-                myRef.child(key).setValue(editOneri.getText().toString()+"/"+item);
-
-                Toast.makeText(OfferActivity.this,"MESAJINIZ BAŞARIYLA GÖNDERİLDİ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(OfferActivity.this,"MESAJINIZ BAŞARIYLA GÖNDERİLDİ", Toast.LENGTH_LONG).show();
+                    editOneri.setText("");
+                }
 
             }
         });
-
     }
-
 }

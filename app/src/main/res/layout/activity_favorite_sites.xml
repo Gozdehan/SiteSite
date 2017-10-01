@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gozdehanozturk.sitesite.FavoriteSitesActivity">
+    tools:context="com.gozdehanozturk.sitesite.activity.FavoriteSitesActivity">
 <ListView
     android:id="@+id/favorite_site_list_view"
     android:layout_width="match_parent"

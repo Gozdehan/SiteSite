@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    tools:context="com.gozdehanozturk.sitesite.OfferActivity">
+    tools:context="com.gozdehanozturk.sitesite.activity.OfferActivity">
 
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/bildiri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,9 +16,9 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="58dp"
+            android:layout_width="80dp"
             android:layout_height="77dp"
-            android:background="@drawable/info8"/>
+            android:background="@drawable/info1"/>
 
         <TextView
             android:id="@+id/txtOneriTanim"
@@ -37,23 +37,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/bildiri"
-        android:layout_marginTop="50dp"
-        android:padding="2dp"
-        android:weightSum="2">
-       <!-- <TextView
-            android:id="@+id/siteAdi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Site Adı: "
-            android:padding="10dp"/>  -->
+        android:layout_marginTop="70dp"
+        android:padding="8dp">
 
         <EditText
             android:id="@+id/edtOneri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="Site Adını Giriniz"
+            android:hint="Site Adresini Giriniz.."
             android:textColorHint="#b2b9b8"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

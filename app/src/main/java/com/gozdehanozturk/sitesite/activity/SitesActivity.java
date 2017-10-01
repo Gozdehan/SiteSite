@@ -1,14 +1,14 @@
-package com.gozdehanozturk.sitesite;
+package com.gozdehanozturk.sitesite.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.gozdehanozturk.sitesite.R;
+import com.gozdehanozturk.sitesite.adapter.SiteListAdapter;
 import com.gozdehanozturk.sitesite.manager.CategoryManager;
-import com.gozdehanozturk.sitesite.manager.FavoriteManager;
 import com.gozdehanozturk.sitesite.model.Category;
-
-import java.util.List;
 
 public class SitesActivity extends AppCompatActivity {
 
@@ -22,13 +22,24 @@ public class SitesActivity extends AppCompatActivity {
 
         int id = getIntent().getExtras().getInt(CategoriesActivity.ID);
 
-        MyApplication application =((MyApplication) getApplication());
+        MyApplication application = ((MyApplication) getApplication());
         categoryManager = application.getCategoryManager();
         Category category = categoryManager.findById(id);
         setTitle(category.getName());
         adapter = new SiteListAdapter(category.getSites(), application.getFavoriteManager());
 
-        ListView listView = (ListView)findViewById(R.id.site_list_view);
+        ListView listView = (ListView) findViewById(R.id.site_list_view);
         listView.setAdapter(adapter);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+           case android.R.id.home:
+               finish();
+               return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

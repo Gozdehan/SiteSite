@@ -35,6 +35,6 @@
         android:layout_alignParentEnd="true"
         android:background="@drawable/arrow_right"
         android:layout_alignTop="@+id/category"
-        android:layout_marginEnd="30dp"/>
+        android:layout_marginEnd="10dp"/>
 
 </RelativeLayout>

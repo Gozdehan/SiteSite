@@ -7,22 +7,14 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".MyApplication"
+        android:name=".activity.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/sg"
         android:label="@string/app_name"
         android:roundIcon="@drawable/sg"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".CategoryActivity"
-            android:theme="@style/noAnimTheme" />
-        <activity
-            android:name=".WebViewActivity"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
-        <activity
-            android:name=".CategoriesActivity"
-            android:configChanges="screenLayout|orientation">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
@@ -30,11 +22,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NoConnectActivity"
-            android:configChanges="screenLayout|orientation" />
-        <activity android:name=".MyActivity" />
+            android:name=".activity.WebViewActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
         <activity
-            android:name=".SearchActivity"
+            android:name=".activity.CategoriesActivity"
+            android:configChanges="screenLayout|orientation"></activity>
+        <activity
+            android:name=".activity.NoConnectActivity"
+            android:configChanges="screenLayout|orientation" />
+        <activity
+            android:name=".activity.SearchActivity"
             android:theme="@style/noAnimTheme" />
 
         <service android:name=".MessageService">
@@ -50,11 +47,10 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
-        <activity android:name=".FavoriteActivity" />
-        <activity android:name=".SubActivity" />
-        <activity android:name=".OfferActivity" />
-        <activity android:name=".SitesActivity" />
-        <activity android:name=".FavoriteSitesActivity"></activity>
+        <activity android:name=".activity.OfferActivity" />
+        <activity android:name=".activity.SitesActivity" />
+        <activity android:name=".activity.FavoriteSitesActivity" />
+        <activity android:name=".activity.NotFavoriteActivity"></activity>
     </application>
 
 </manifest>

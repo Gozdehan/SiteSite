@@ -1,4 +1,4 @@
-package com.gozdehanozturk.sitesite;
+package com.gozdehanozturk.sitesite.activity;
 
 import android.app.Application;
 

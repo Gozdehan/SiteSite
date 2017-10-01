@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gozdehanozturk.sitesite.OfferActivity">
+    tools:context="com.gozdehanozturk.sitesite.activity.OfferActivity">
 
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -16,9 +16,9 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="60dp"
             android:layout_height="55dp"
-            android:background="@drawable/info8"/>
+            android:background="@drawable/info1"/>
 
         <TextView
             android:id="@+id/txtOneriTanim"
@@ -35,14 +35,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/bildiri"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
         android:padding="2dp">
         <EditText
             android:id="@+id/edtOneri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="Site Adını Giriniz"
+            android:hint="Site Adresini Giriniz.."
             android:textColorHint="#b2b9b8"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

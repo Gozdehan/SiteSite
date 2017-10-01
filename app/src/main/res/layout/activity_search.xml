@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gozdehanozturk.sitesite.SearchActivity">
+    tools:context="com.gozdehanozturk.sitesite.activity.SearchActivity">
 
     <ListView
         android:id="@+id/search_list_view"

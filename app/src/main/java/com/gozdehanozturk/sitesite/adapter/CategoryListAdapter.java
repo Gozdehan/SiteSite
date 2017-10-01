@@ -1,4 +1,4 @@
-package com.gozdehanozturk.sitesite;
+package com.gozdehanozturk.sitesite.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gozdehanozturk.sitesite.R;
 import com.gozdehanozturk.sitesite.model.Category;
 import com.squareup.picasso.Picasso;
 

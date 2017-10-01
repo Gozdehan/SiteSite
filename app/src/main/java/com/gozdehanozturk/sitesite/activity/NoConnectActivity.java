@@ -1,4 +1,4 @@
-package com.gozdehanozturk.sitesite;
+package com.gozdehanozturk.sitesite.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.wang.avi.AVLoadingIndicatorView;
+import com.gozdehanozturk.sitesite.R;
 
 public class NoConnectActivity extends AppCompatActivity {
     Button mConnect;

@@ -1,4 +1,4 @@
-package com.gozdehanozturk.sitesite;
+package com.gozdehanozturk.sitesite.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,14 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.gozdehanozturk.sitesite.R;
+import com.gozdehanozturk.sitesite.activity.WebViewActivity;
 import com.gozdehanozturk.sitesite.manager.FavoriteManager;
 import com.gozdehanozturk.sitesite.model.Site;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.gozdehanozturk.sitesite.R.id.tb;
 
 /**
  * Created by Gozde on 30.09.2017.

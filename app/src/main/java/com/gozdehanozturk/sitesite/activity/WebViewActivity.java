@@ -1,11 +1,13 @@
-package com.gozdehanozturk.sitesite;
+package com.gozdehanozturk.sitesite.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.gozdehanozturk.sitesite.R;
 import com.wang.avi.AVLoadingIndicatorView;
 
 public class WebViewActivity extends AppCompatActivity {
@@ -17,6 +19,7 @@ public class WebViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String url = getIntent().getExtras().getString("url");
         String title = getIntent().getExtras().getString("title");
@@ -42,6 +45,15 @@ public class WebViewActivity extends AppCompatActivity {
                 avi.hide();
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

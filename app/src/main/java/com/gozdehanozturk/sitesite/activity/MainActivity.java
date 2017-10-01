@@ -1,10 +1,12 @@
-package com.gozdehanozturk.sitesite;
+package com.gozdehanozturk.sitesite.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.gozdehanozturk.sitesite.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(isNetworkConnected()){
 
-            Intent intent = new Intent(MainActivity.this,CategoryActivity.class);
+            Intent intent = new Intent(MainActivity.this,CategoriesActivity.class);
             startActivity(intent);
             finish();
         }

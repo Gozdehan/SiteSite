@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gozdehanozturk.sitesite.CategoriesActivity">
+    tools:context="com.gozdehanozturk.sitesite.activity.CategoriesActivity">
 
     <ListView
         android:id="@+id/categories"
