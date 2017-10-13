@@ -1,8 +1,11 @@
 package com.gozdehanozturk.sitesite.activity;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.gozdehanozturk.sitesite.R;
 import com.gozdehanozturk.sitesite.adapter.SiteListAdapter;
@@ -14,17 +17,29 @@ import java.util.List;
 
 public class FavoriteSitesActivity extends AppCompatActivity {
 
+    SiteListAdapter sla;
+    TextView tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_sites);
+
+
+        tv = (TextView) findViewById(R.id.notFavoriteInfo);
+
+        getSupportActionBar().setTitle("Favorilerim");
 
         MyApplication application = (MyApplication) getApplication();
         FavoriteManager favoriteManager = application.getFavoriteManager();
         List<Site> sites = filterFavoriteSites(application.getCategoryManager().getFlatSiteList(), favoriteManager);
 
         ListView listView = (ListView) findViewById(R.id.favorite_site_list_view);
-        listView.setAdapter(new SiteListAdapter(sites, favoriteManager));
+        sla = new SiteListAdapter(sites, favoriteManager);
+        sla.setViews(listView, tv);
+        listView.setAdapter(sla);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private List<Site> filterFavoriteSites(List<Site> sites, FavoriteManager favoriteManager) {
@@ -37,5 +52,15 @@ public class FavoriteSitesActivity extends AppCompatActivity {
         }
 
         return result;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

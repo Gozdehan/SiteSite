@@ -3,6 +3,7 @@ package com.gozdehanozturk.sitesite.activity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,9 +26,9 @@ public class OfferActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer);
 
-        ActionBar ab = getSupportActionBar();
-        ab.setTitle("Önerileriniz?");
+        getSupportActionBar().setTitle("Önerileriniz");
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         editOneri = (EditText) findViewById(R.id.edtOneri);
 
         spinner = (Spinner)findViewById(R.id.spKategori);
@@ -61,5 +62,15 @@ public class OfferActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

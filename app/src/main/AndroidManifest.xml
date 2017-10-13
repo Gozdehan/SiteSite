@@ -34,7 +34,7 @@
             android:name=".activity.SearchActivity"
             android:theme="@style/noAnimTheme" />
 
-        <service android:name=".MessageService">
+        <service android:name=".manager.MessageService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -50,7 +50,6 @@
         <activity android:name=".activity.OfferActivity" />
         <activity android:name=".activity.SitesActivity" />
         <activity android:name=".activity.FavoriteSitesActivity" />
-        <activity android:name=".activity.NotFavoriteActivity"></activity>
     </application>
 
 </manifest>

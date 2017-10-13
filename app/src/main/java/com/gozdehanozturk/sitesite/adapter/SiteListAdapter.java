@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -28,13 +29,41 @@ public class SiteListAdapter extends BaseAdapter {
     private List<Site> sites = new ArrayList<>();
     private FavoriteManager favoriteManager;
 
+    ListView lv;
+    TextView tv;
+
     public SiteListAdapter(List<Site> sites, FavoriteManager favoriteManager){
         this.sites=sites;
         this.favoriteManager=favoriteManager;
     }
 
+    public void setViews(ListView lv, TextView tv)
+    {
+        this.lv = lv;
+        this.tv = tv;
+    }
+
+
     @Override
     public int getCount() {
+
+        if (sites.isEmpty())
+        {
+            if (lv != null && tv != null)
+            {
+                lv.setVisibility(View.GONE);
+                tv.setVisibility(View.VISIBLE);
+            }
+
+        }
+        else
+        {
+            if (lv != null && tv != null) {
+                lv.setVisibility(View.VISIBLE);
+                tv.setVisibility(View.GONE);
+            }
+        }
+
         return sites.size();
     }
 
@@ -69,7 +98,7 @@ public class SiteListAdapter extends BaseAdapter {
             }
         });
         text.setText(site.getName());
-        Picasso.with(view.getContext()).load(site.getLogoUrl()).into(image);
+        Picasso.with(view.getContext()).load(site.getLogoUrl()).placeholder(R.drawable.sg).into(image);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

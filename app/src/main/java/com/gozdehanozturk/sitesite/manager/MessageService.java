@@ -1,4 +1,4 @@
-package com.gozdehanozturk.sitesite;
+package com.gozdehanozturk.sitesite.manager;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.gozdehanozturk.sitesite.R;
 import com.gozdehanozturk.sitesite.activity.MainActivity;
 
 public class MessageService extends FirebaseMessagingService {

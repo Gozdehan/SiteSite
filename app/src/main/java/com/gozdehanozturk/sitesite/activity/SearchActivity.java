@@ -24,11 +24,12 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         MyApplication application = ((MyApplication) getApplication());
         sites = application.getCategoryManager().getFlatSiteList();
         adapter = new SiteListAdapter(sites, application.getFavoriteManager());
         ((ListView) findViewById(R.id.search_list_view)).setAdapter(adapter);
+
     }
 
     @Override
@@ -46,6 +47,10 @@ public class SearchActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+
             case R.id.searchmenu:
                 SearchView searchView = (SearchView)item.getActionView();
                 searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -72,8 +77,6 @@ public class SearchActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-
-
         }
         return super.onOptionsItemSelected(item);
     }
