@@ -8,7 +8,8 @@
 <ListView
     android:id="@+id/favorite_site_list_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent"
+ />
     <TextView
         android:id="@+id/notFavoriteInfo"
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:textSize="19sp"
         android:visibility="gone"
         android:text="Henüz Favorilenmiş Bir Siteniz Yok"/>
 

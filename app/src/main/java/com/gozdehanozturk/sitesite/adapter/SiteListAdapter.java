@@ -98,7 +98,7 @@ public class SiteListAdapter extends BaseAdapter {
             }
         });
         text.setText(site.getName());
-        Picasso.with(view.getContext()).load(site.getLogoUrl()).placeholder(R.drawable.sg).into(image);
+        Picasso.with(view.getContext()).load(site.getLogoUrl()).placeholder(R.drawable.notification).into(image);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
