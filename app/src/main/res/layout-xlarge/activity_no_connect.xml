@@ -11,9 +11,9 @@
 
    <ImageView
         android:id="@+id/connectImg"
-        android:layout_width="465dp"
-        android:layout_height="360dp"
-       android:layout_weight="3"
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+       android:layout_weight="3.5"
         android:background="@drawable/wifi_off"
        android:layout_gravity="center"/>
 
@@ -21,19 +21,19 @@
         android:id="@+id/connectText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1.4"
-        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
         android:textAlignment="center"
-        android:textSize="60sp"
+        android:textSize="48sp"
         android:text="@string/connect"/>
 
     <Button
         android:id="@+id/connectBtn"
         android:padding="10dp"
         android:textSize="45sp"
-        android:layout_weight="0.6"
-        android:layout_width="700dp"
-        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:layout_width="720dp"
+        android:layout_height="10dp"
         android:layout_gravity="center"
         android:background="@drawable/button_background"
         android:textColor="@color/white"

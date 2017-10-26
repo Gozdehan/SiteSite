@@ -14,7 +14,8 @@
         android:roundIcon="@drawable/sg"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
@@ -23,16 +24,20 @@
         </activity>
         <activity
             android:name=".activity.WebViewActivity"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.CategoriesActivity"
-            android:configChanges="screenLayout|orientation"></activity>
+            android:configChanges="screenLayout|orientation"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activity.NoConnectActivity"
-            android:configChanges="screenLayout|orientation" />
+            android:configChanges="screenLayout|orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.SearchActivity"
-            android:theme="@style/noAnimTheme" />
+            android:theme="@style/noAnimTheme"
+            android:screenOrientation="portrait"/>
 
         <service android:name=".manager.MessageService">
             <intent-filter>
@@ -47,9 +52,12 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
-        <activity android:name=".activity.OfferActivity" />
-        <activity android:name=".activity.SitesActivity" />
-        <activity android:name=".activity.FavoriteSitesActivity" />
+        <activity android:name=".activity.OfferActivity"
+            android:screenOrientation= "portrait" />
+        <activity android:name=".activity.SitesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.FavoriteSitesActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

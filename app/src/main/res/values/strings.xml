@@ -8,7 +8,8 @@
     <string name="favorite">Favoriler</string>
     <string name="offer_note">Uygulamaya Eklenmesini İstediğiniz Siteyi Kategorisiyle Birlikte Bize Bildirin</string>
     <string name="offer_hint">Site Adresini Giriniz..</string>
-    <string name="offer_button">GONDER</string>
+    <string name="offer_button">Gönder</string>
+    <string name="again_btn">Tekrar Deneyin</string>
 
     <string-array name="category_array">
         <item>KATEGORİ SEÇİNİZ</item>

@@ -16,8 +16,8 @@
         android:layout_weight="1"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
             android:background="@drawable/sg"/>
         <TextView
             android:layout_width="wrap_content"
@@ -65,8 +65,8 @@
             android:id="@+id/btnGonder"
             android:layout_width="160dp"
             android:layout_height="20dp"
-            android:layout_marginTop="9dp"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:textSize="8sp"
             android:background="@drawable/button_background"

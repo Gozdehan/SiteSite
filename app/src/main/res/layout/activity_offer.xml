@@ -37,7 +37,7 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size"
             android:text="@string/offer_note"
             android:textAlignment="center" />
     </LinearLayout>
@@ -49,15 +49,15 @@
         <EditText
             android:id="@+id/edtOneri"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="20dp"
             android:hint="@string/offer_hint"
             android:textColorHint="#b2b9b8" />
 
         <Spinner
             android:id="@+id/spKategori"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="54dp"
             android:layout_marginTop="20dp"
             />
 
@@ -68,74 +68,8 @@
             android:layout_marginTop="80dp"
             android:layout_gravity="center"
             android:textColor="@color/white"
+            android:textSize="@dimen/offer_btnsize"
             android:background="@drawable/button_background"
-            android:text="GÖNDER" />
+            android:text="@string/offer_button" />
     </LinearLayout>
-
-  <!--  <LinearLayout
-        android:layout_marginTop="20dp"
-        android:id="@+id/bildiri"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="77dp"
-            android:background="@drawable/info1"/>
-
-        <TextView
-            android:id="@+id/txtOneriTanim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="Uygulamaya Eklenmesini İstediğiniz Siteyi Kategorisiyle Birlikte Bize Bildirin"
-            android:textAlignment="center"
-            android:padding="10dp"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearSite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/bildiri"
-        android:layout_marginTop="70dp"
-        android:padding="8dp">
-
-        <EditText
-            android:id="@+id/edtOneri"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Site Adresini Giriniz.."
-            android:textColorHint="#b2b9b8"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
-
-        <Spinner
-            android:id="@+id/spKategori"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
-    </LinearLayout>
-
-
-    <Button
-        android:id="@+id/btnGonder"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearSite"
-        android:layout_marginTop="80dp"
-        android:layout_centerInParent="true"
-        android:textColor="@color/white"
-        android:background="@drawable/button_background"
-        android:text="GÖNDER" />  -->
-
 </LinearLayout>
