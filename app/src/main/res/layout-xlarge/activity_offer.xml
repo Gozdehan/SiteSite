@@ -19,7 +19,7 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:background="@drawable/sg"/>
+            android:background="@mipmap/sg"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="200dp"

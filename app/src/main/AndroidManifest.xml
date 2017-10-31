@@ -9,9 +9,9 @@
     <application
         android:name=".activity.MyApplication"
         android:allowBackup="true"
-        android:icon="@drawable/sg"
+        android:icon="@mipmap/sg"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/sg"
+        android:roundIcon="@mipmap/sg"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity"
@@ -47,7 +47,7 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/notification" />
+            android:resource="@mipmap/notification" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
