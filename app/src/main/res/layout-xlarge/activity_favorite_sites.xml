@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.gozdehanozturk.sitesite.activity.FavoriteSitesActivity">
-<ListView
-    android:id="@+id/favorite_site_list_view"
-    android:layout_width="match_parent"
-    android:visibility="visible"
-    android:layout_height="match_parent"/>
+    <ListView
+        android:id="@+id/favorite_site_list_view"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="match_parent"/>
     <TextView
         android:id="@+id/notFavoriteInfo"
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/xlarge_text_size"
         android:visibility="gone"
         android:text="Henüz Favorilenmiş Bir Siteniz Yok"/>
 
