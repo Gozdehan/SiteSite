@@ -51,7 +51,7 @@ public class CategoryListAdapter extends BaseAdapter {
         TextView text = view.findViewById(R.id.category);
 
         text.setText(category.getName());
-        Picasso.with(view.getContext()).load(category.getLogoUrl()).placeholder(R.mipmap.loader).error(R.mipmap.warning).into(image);
+        Picasso.with(view.getContext()).load(category.getLogoUrl()).placeholder(R.drawable.progress_animation).error(R.mipmap.warning).into(image);
 
         return view;
     }
