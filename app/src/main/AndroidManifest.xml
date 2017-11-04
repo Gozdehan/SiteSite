@@ -14,30 +14,26 @@
         android:roundIcon="@mipmap/sg"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity"
+        <activity
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.WebViewActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CategoriesActivity"
             android:configChanges="screenLayout|orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.NoConnectActivity"
             android:configChanges="screenLayout|orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SearchActivity"
-            android:theme="@style/noAnimTheme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/noAnimTheme" />
 
         <service android:name=".manager.MessageService">
             <intent-filter>
@@ -52,12 +48,24 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
-        <activity android:name=".activity.OfferActivity"
-            android:screenOrientation= "portrait" />
-        <activity android:name=".activity.SitesActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.FavoriteSitesActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.OfferActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SitesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FavoriteSitesActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
