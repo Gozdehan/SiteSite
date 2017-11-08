@@ -12,10 +12,10 @@
    <ImageView
         android:id="@+id/connectImg"
         android:layout_width="245dp"
-       android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="3.3"
         android:background="@drawable/wifi_off"
-       android:layout_gravity="center"/>
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/connectText"
