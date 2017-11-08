@@ -47,6 +47,9 @@ public class OfferActivity extends AppCompatActivity {
                     Toast.makeText(OfferActivity.this,"LÜTFEN SİTE ADRESİNİ GİRİNİZ", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(spinner.getSelectedItem().equals("KATEGORİ SEÇİNİZ")){
+                    Toast.makeText(OfferActivity.this, "LÜTFEN KATEGORİ SEÇİNİZ", Toast.LENGTH_SHORT).show();
+                }
                 else{
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("oneriler");
