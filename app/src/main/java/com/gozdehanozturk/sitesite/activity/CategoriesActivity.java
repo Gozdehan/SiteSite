@@ -9,16 +9,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.gozdehanozturk.sitesite.R;
 import com.gozdehanozturk.sitesite.adapter.CategoryListAdapter;
 import com.gozdehanozturk.sitesite.manager.CategoryManager;
 import com.gozdehanozturk.sitesite.manager.LoadListener;
 import com.gozdehanozturk.sitesite.model.Category;
-import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class CategoriesActivity extends AppCompatActivity implements LoadListener, AdapterView.OnItemClickListener {
 
@@ -98,5 +99,4 @@ public class CategoriesActivity extends AppCompatActivity implements LoadListene
         intent.putExtra(ID, category.getId());
         startActivity(intent);
     }
-
 }

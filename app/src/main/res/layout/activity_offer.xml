@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="2">
+        android:layout_weight="1.9">
         <EditText
             android:id="@+id/edtOneri"
             android:layout_width="match_parent"
@@ -60,16 +60,16 @@
             android:layout_height="54dp"
             android:layout_marginTop="20dp"
             />
-
-        <Button
-            android:id="@+id/btnGonder"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/offer_btnsize"
-            android:background="@drawable/button_background"
-            android:text="@string/offer_button" />
     </LinearLayout>
+    <Button
+        android:id="@+id/btnGonder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_weight="0.1"
+        android:layout_gravity="center"
+        android:textColor="@color/topColor"
+        android:textSize="@dimen/offer_btnsize"
+        android:background="@drawable/button_background"
+        android:text="@string/offer_button" />
 </LinearLayout>
