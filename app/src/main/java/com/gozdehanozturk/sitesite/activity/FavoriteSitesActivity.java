@@ -4,9 +4,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.gozdehanozturk.sitesite.R;
 import com.gozdehanozturk.sitesite.adapter.SiteListAdapter;
 import com.gozdehanozturk.sitesite.manager.FavoriteManager;
@@ -19,6 +23,7 @@ public class FavoriteSitesActivity extends AppCompatActivity {
 
     SiteListAdapter sla;
     TextView tv;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,19 @@ public class FavoriteSitesActivity extends AppCompatActivity {
         listView.setAdapter(sla);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        reklamYukle();
+    }
+
+    private void reklamYukle() {
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(getString(R.string.favori_reklam));
+        LinearLayout layoutReklam = (LinearLayout) findViewById(R.id.favorireklam);
+        layoutReklam.addView(adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     private List<Site> filterFavoriteSites(List<Site> sites, FavoriteManager favoriteManager) {

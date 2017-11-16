@@ -6,8 +6,12 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.gozdehanozturk.sitesite.R;
 import com.gozdehanozturk.sitesite.adapter.SiteListAdapter;
 import com.gozdehanozturk.sitesite.model.Site;
@@ -19,6 +23,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private SiteListAdapter adapter;
     private List<Site> sites = new ArrayList<>();
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,19 @@ public class SearchActivity extends AppCompatActivity {
         adapter = new SiteListAdapter(sites, application.getFavoriteManager());
         ((ListView) findViewById(R.id.search_list_view)).setAdapter(adapter);
 
+        reklamYukle();
+
+    }
+
+    private void reklamYukle() {
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(getString(R.string.arama_reklam));
+        LinearLayout layoutReklam = (LinearLayout) findViewById(R.id.aramareklam);
+        layoutReklam.addView(adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     @Override

@@ -9,8 +9,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.gozdehanozturk.sitesite.R;
 import com.gozdehanozturk.sitesite.adapter.SiteListAdapter;
 import com.gozdehanozturk.sitesite.manager.CategoryManager;
@@ -20,6 +24,7 @@ public class SitesActivity extends AppCompatActivity {
 
     private CategoryManager categoryManager;
     private SiteListAdapter adapter;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,19 @@ public class SitesActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        reklamYukle();
+    }
+
+    private void reklamYukle() {
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(getString(R.string.sitelist_reklam_id));
+        LinearLayout layoutReklam = (LinearLayout) findViewById(R.id.sitesreklam);
+        layoutReklam.addView(adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     @Override

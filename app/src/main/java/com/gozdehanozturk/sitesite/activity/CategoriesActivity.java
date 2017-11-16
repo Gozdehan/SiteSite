@@ -8,9 +8,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.gozdehanozturk.sitesite.R;
 import com.gozdehanozturk.sitesite.adapter.CategoryListAdapter;
 import com.gozdehanozturk.sitesite.manager.CategoryManager;
@@ -26,6 +30,7 @@ public class CategoriesActivity extends AppCompatActivity implements LoadListene
     public static final String ID = "id";
     private CategoryListAdapter adapter;
     private CategoryManager categoryManager;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,19 @@ public class CategoriesActivity extends AppCompatActivity implements LoadListene
         listView.setOnItemClickListener(this);
         categoryManager = ((MyApplication) getApplication()).getCategoryManager();
         categoryManager.load(this);
+        
+        reklamiYukle();
+    }
+
+    private void reklamiYukle() {
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(getString(R.string.reklam_id));
+        LinearLayout layoutReklam = (LinearLayout) findViewById(R.id.reklam);
+        layoutReklam.addView(adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     @Override

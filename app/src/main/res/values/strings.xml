@@ -11,6 +11,11 @@
     <string name="offer_hint">Site Adresini Giriniz..</string>
     <string name="offer_button">Gönder</string>
     <string name="again_btn">Tekrar Deneyin</string>
+    <string name="reklam_id">ca-app-pub-9718086435222024/7062921474</string>
+    <string name="sitelist_reklam_id">ca-app-pub-9718086435222024/9278144982</string>
+    <string name="arama_reklam">ca-app-pub-9718086435222024/2793515739</string>
+    <string name="oneri_reklam">ca-app-pub-9718086435222024/9390713675</string>
+    <string name="favori_reklam">ca-app-pub-9718086435222024/3364361370</string>
 
     <string-array name="category_array">
         <item>KATEGORİ SEÇİNİZ</item>

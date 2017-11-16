@@ -8,9 +8,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.gozdehanozturk.sitesite.R;
@@ -20,6 +24,7 @@ public class OfferActivity extends AppCompatActivity {
     EditText editOneri;
     Spinner spinner;
     Button btnGonder;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +70,19 @@ public class OfferActivity extends AppCompatActivity {
 
             }
         });
+
+        reklamYukle();
+    }
+
+    private void reklamYukle() {
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(getString(R.string.oneri_reklam));
+        LinearLayout layoutReklam = (LinearLayout) findViewById(R.id.offerreklam);
+        layoutReklam.addView(adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     @Override

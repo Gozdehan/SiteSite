@@ -21,4 +21,12 @@
         android:visibility="gone"
         android:text="Henüz Favorilenmiş Bir Siteniz Yok"/>
 
+    <LinearLayout
+        android:id="@+id/favorireklam"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"></LinearLayout>
+
 </RelativeLayout>
