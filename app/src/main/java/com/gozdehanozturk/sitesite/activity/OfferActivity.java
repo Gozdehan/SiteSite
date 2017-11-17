@@ -24,7 +24,7 @@ public class OfferActivity extends AppCompatActivity {
     EditText editOneri;
     Spinner spinner;
     Button btnGonder;
-    private AdView adView;
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,6 @@ public class OfferActivity extends AppCompatActivity {
 
             }
         });
-
         reklamYukle();
     }
 

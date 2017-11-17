@@ -43,7 +43,7 @@ public class CategoriesActivity extends AppCompatActivity implements LoadListene
         listView.setOnItemClickListener(this);
         categoryManager = ((MyApplication) getApplication()).getCategoryManager();
         categoryManager.load(this);
-        
+
         reklamiYukle();
     }
 
